@@ -195,11 +195,27 @@ coroutine.wrap(XCJYJRI_fake_script)()
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
     
 
-local win = Flux:Window("ZeriusHub", "Skywars", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local win = Flux:Window("ZeriusHub", "Skywars", Color3.fromRGB(255,1,1), Enum.KeyCode.LeftControl)
 local tab = win:Tab("Combat", "http://www.roblox.com/asset/?id=6023426915")
 local tab1 = win:Tab("Teleports", "http://www.roblox.com/asset/?id=6023426915")
 local tab3 = win:Tab("Visuals", "http://www.roblox.com/asset/?id=6023426915")
 local tab4 = win:Tab("ZerMeme", "http://www.roblox.com/asset/?id=6023426915")
+local tab5 = win:Tab("Configs", "http://www.roblox.com/asset/?id=6023426915")
+local tab6 = win:Tab("Binds", "http://www.roblox.com/asset/?id=6023426915")
+local tab7 = win:Tab("Credits", "http://www.roblox.com/asset/?id=6023426915")
+
+tab6:Bind("Close Bind", Enum.KeyCode.Q, function()
+	game:GetService("CoreGui").FluxLib.MainFrame.Visible = false
+
+end)
+tab6:Bind("Open Bind", Enum.KeyCode.F, function()
+	game:GetService("CoreGui").FluxLib.MainFrame.Visible = true
+	
+end)
+tab7:Label("Main Developer: GirafeLOL#2806 ")
+tab5:Label("Blatant Config: BlinkLess Fly, Kill Aura, Hitbox, HighJump ")
+tab5:Label("Ghost Config: Hitbox  [Anything thats visuals, also Blink Fly] ")
+tab5:Label("Semi Blatant Config: Hitbox, Killaura, Blink Fly, anything thats visuals")
 tab4:Dropdown("Killsults!", {"KillSults 1","KillSults 2","KillSults 3", "KillSults 4", "KillSults 5", "KillSults 6","KillSults 7"}, function(Anims)    
       
           if Anims == "KillSults 1" then game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer('Your Skills in this game are as useless as yourself!', 'All');  end
@@ -217,10 +233,25 @@ end)
 tab4:Button("Remove your legs!", "This function alaways works.", function()
     loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Remove%20Legs.txt"))()
 end)
+
 tab4:Button("Remove your Arms!", "This function alaways works.", function()
 loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Remove%20Arms.txt"))()
 end)
+tab4:Button("Set Skybox to Zerius", "This function alaways works.", function()
+    game:GetService("Lighting").Sky.SkyboxBk = "rbxassetid://11720631828"
+game:GetService("Lighting").Sky.SkyboxDn = "rbxassetid://11720631828"
+game:GetService("Lighting").Sky.SkyboxFt = "rbxassetid://11720631828"
+game:GetService("Lighting").Sky.SkyboxLf = "rbxassetid://11720631828"
+game:GetService("Lighting").Sky.SkyboxRt = "rbxassetid://11720631828"
+game:GetService("Lighting").Sky.SkyboxUp = "rbxassetid://11720631828"
 
+
+
+    end)
+	tab4:Textbox("Make your own killsult!", "Killsult maker?", true, function(t)
+		print(t)
+		game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(t, 'All');
+		end)
 tab4:Button("Hypixel Fly ", "This function alaways works.", function()
    
  local walkSpeed = 50
