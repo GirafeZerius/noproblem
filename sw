@@ -197,12 +197,16 @@ local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scr
 
 local win = Flux:Window("ZeriusHub", "Skywars", Color3.fromRGB(255,1,1), Enum.KeyCode.LeftControl)
 local tab = win:Tab("Combat", "http://www.roblox.com/asset/?id=6023426915")
+
 local tab1 = win:Tab("Teleports", "http://www.roblox.com/asset/?id=6023426915")
 local tab3 = win:Tab("Visuals", "http://www.roblox.com/asset/?id=6023426915")
 local tab4 = win:Tab("ZerMeme", "http://www.roblox.com/asset/?id=6023426915")
 local tab5 = win:Tab("Configs", "http://www.roblox.com/asset/?id=6023426915")
+local tab2 = win:Tab("Movement", "http://www.roblox.com/asset/?id=6023426915")
 local tab6 = win:Tab("Binds", "http://www.roblox.com/asset/?id=6023426915")
 local tab7 = win:Tab("Credits", "http://www.roblox.com/asset/?id=6023426915")
+local tab8 = win:Tab("Launcher", "http://www.roblox.com/asset/?id=6023426915")
+
 
 tab6:Bind("Close Bind", Enum.KeyCode.Q, function()
 	game:GetService("CoreGui").FluxLib.MainFrame.Visible = false
@@ -214,6 +218,7 @@ tab6:Bind("Open Bind", Enum.KeyCode.F, function()
 end)
 tab7:Label("Main Developer: GirafeLOL#2806 ")
 tab5:Label("Blatant Config: BlinkLess Fly, Kill Aura, Hitbox, HighJump ")
+tab3:Label("To close Music Player do: music:close and open: music:open")
 tab5:Label("Ghost Config: Hitbox  [Anything thats visuals, also Blink Fly] ")
 tab5:Label("Semi Blatant Config: Hitbox, Killaura, Blink Fly, anything thats visuals")
 tab4:Dropdown("Killsults!", {"KillSults 1","KillSults 2","KillSults 3", "KillSults 4", "KillSults 5", "KillSults 6","KillSults 7"}, function(Anims)    
@@ -234,8 +239,263 @@ tab4:Button("Remove your legs!", "This function alaways works.", function()
     loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Remove%20Legs.txt"))()
 end)
 
+tab8:Button("Download Launcher (Copies link to your clipboard)", "This function alaways works.", function()
+setclipboard("https://cdn.discordapp.com/attachments/1048638679612145784/1057831886736609340/ZerLauncher_Secure.rar")
+print(Display.Name " Link Has been copied to clipboard")
+end)
+
 tab4:Button("Remove your Arms!", "This function alaways works.", function()
 loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/Remove%20Arms.txt"))()
+end)
+
+tab3:Button("Music Player", "This function alaways works.", function()
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local Frame_2 = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local PlayPirateKing = Instance.new("TextButton")
+local TextLabel_2 = Instance.new("TextLabel")
+local PlayHalloweenHorrorsWaltz = Instance.new("TextButton")
+local TextLabel_3 = Instance.new("TextLabel")
+local Nevergonnagiveyouupplay = Instance.new("TextButton")
+local TextLabel_4 = Instance.new("TextLabel")
+local Jinglebellinstrumentals = Instance.new("TextButton")
+local TextLabel_5 = Instance.new("TextLabel")
+local Tokyomachineplay = Instance.new("TextButton")
+local TextLabel_6 = Instance.new("TextLabel")
+
+--Properties:
+local Players = game:GetService("Players")
+
+local function chatted(msg)
+	if msg == "music:close" then
+		-- script her
+		--e
+		Frame.Visible = false
+		Frame_2.Visible = false
+
+	end
+end
+
+Players.LocalPlayer.Chatted:Connect(chatted)
+local Players = game:GetService("Players")
+
+	if msg == "music:open" then
+		-- script her
+		--e
+		Frame.Visible = true
+		Frame_2.Visible = true
+
+	end
+
+Players.LocalPlayer.Chatted:Connect(chatted)
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
+Frame.Position = UDim2.new(0.122637548, 0, 0.269230783, 0)
+Frame.Size = UDim2.new(0, 967, 0, 630)
+
+Frame_2.Parent = Frame
+Frame_2.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
+Frame_2.Size = UDim2.new(0, 967, 0, 39)
+
+print("The role of the king is a lonely one to play ;)")
+TextLabel.Parent = Frame_2
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 7854854504448.000
+TextLabel.Position = UDim2.new(0.335056901, 0, -0.15384616, 0)
+TextLabel.Size = UDim2.new(0, 367, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Zerius Music Player"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+
+PlayPirateKing.Name = "Play Pirate King"
+PlayPirateKing.Parent = Frame_2
+PlayPirateKing.BackgroundColor3 = Color3.fromRGB(79, 79, 79)
+PlayPirateKing.Position = UDim2.new(0.495346427, 0, 2.81562877, 0)
+PlayPirateKing.Size = UDim2.new(0, 200, 0, 50)
+PlayPirateKing.Font = Enum.Font.SourceSans
+PlayPirateKing.Text = "Play"
+PlayPirateKing.TextColor3 = Color3.fromRGB(255, 255, 255)
+PlayPirateKing.TextScaled = true
+PlayPirateKing.TextSize = 14.000
+PlayPirateKing.TextWrapped = true
+PlayPirateKing.MouseButton1Click:Connect(function()
+	local hi = Instance.new("Sound")
+	hi.Name = "Sound"
+	hi.SoundId = "http://www.roblox.com/asset/?id=1835322563"
+	hi.Volume = 2
+	hi.Looped = false
+	hi.archivable = false
+	hi.Parent = game.Workspace
+
+		hi:Play()
+	
+end)
+
+
+TextLabel_2.Parent = PlayPirateKing
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.BackgroundTransparency = 58.000
+TextLabel_2.Position = UDim2.new(0, 0, -1.20000005, 0)
+TextLabel_2.Size = UDim2.new(0, 200, 0, 50)
+TextLabel_2.Font = Enum.Font.SourceSans
+TextLabel_2.Text = "Pirate King"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextScaled = true
+TextLabel_2.TextSize = 14.000
+TextLabel_2.TextWrapped = true
+
+PlayHalloweenHorrorsWaltz.Name = "Play Halloween Horrors Waltz"
+PlayHalloweenHorrorsWaltz.Parent = Frame_2
+PlayHalloweenHorrorsWaltz.BackgroundColor3 = Color3.fromRGB(79, 79, 79)
+PlayHalloweenHorrorsWaltz.Position = UDim2.new(0.723888278, 0, 2.81562877, 0)
+PlayHalloweenHorrorsWaltz.Size = UDim2.new(0, 200, 0, 50)
+PlayHalloweenHorrorsWaltz.Font = Enum.Font.SourceSans
+PlayHalloweenHorrorsWaltz.Text = "Play"
+PlayHalloweenHorrorsWaltz.TextColor3 = Color3.fromRGB(255, 255, 255)
+PlayHalloweenHorrorsWaltz.TextScaled = true
+PlayHalloweenHorrorsWaltz.TextSize = 14.000
+PlayHalloweenHorrorsWaltz.TextWrapped = true
+PlayHalloweenHorrorsWaltz.MouseButton1Click:Connect(function()-- 1836009626
+	local hi = Instance.new("Sound")
+	hi.Name = "Sound"
+	hi.SoundId = "http://www.roblox.com/asset/?id=1836009626"
+	hi.Volume = 2
+	hi.Looped = false
+	hi.archivable = false
+	hi.Parent = game.Workspace
+
+	hi:Play()
+
+end)
+TextLabel_3.Parent = PlayHalloweenHorrorsWaltz
+TextLabel_3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.BackgroundTransparency = 58.000
+TextLabel_3.Position = UDim2.new(0, 0, -1.20000005, 0)
+TextLabel_3.Size = UDim2.new(0, 200, 0, 50)
+TextLabel_3.Font = Enum.Font.SourceSans
+TextLabel_3.Text = "Halloween Horrors Waltz"
+TextLabel_3.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_3.TextScaled = true
+TextLabel_3.TextSize = 14.000
+TextLabel_3.TextWrapped = true
+
+Nevergonnagiveyouupplay.Name = "Never gonna give you up play"
+Nevergonnagiveyouupplay.Parent = Frame_2
+Nevergonnagiveyouupplay.BackgroundColor3 = Color3.fromRGB(79, 79, 79)
+Nevergonnagiveyouupplay.Position = UDim2.new(0.0227507651, 0, 5.8925519, 0)
+Nevergonnagiveyouupplay.Size = UDim2.new(0, 200, 0, 50)
+Nevergonnagiveyouupplay.Font = Enum.Font.SourceSans
+Nevergonnagiveyouupplay.Text = "Play"
+Nevergonnagiveyouupplay.TextColor3 = Color3.fromRGB(255, 255, 255)
+Nevergonnagiveyouupplay.TextScaled = true
+Nevergonnagiveyouupplay.TextSize = 14.000
+Nevergonnagiveyouupplay.TextWrapped = true
+Nevergonnagiveyouupplay.MouseButton1Click:Connect(function()-- 1836009626
+	local hi = Instance.new("Sound")
+	hi.Name = "Sound"
+	hi.SoundId = "http://www.roblox.com/asset/?id=1838569831"
+	hi.Volume = 2
+	hi.Looped = false
+	hi.archivable = false
+	hi.Parent = game.Workspace
+
+	hi:Play()
+
+end)
+TextLabel_4.Parent = Nevergonnagiveyouupplay
+TextLabel_4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_4.BackgroundTransparency = 58.000
+TextLabel_4.Position = UDim2.new(0, 0, -1.20000005, 0)
+TextLabel_4.Size = UDim2.new(0, 200, 0, 50)
+TextLabel_4.Font = Enum.Font.SourceSans
+TextLabel_4.Text = "Never Gonna Give You Up"
+TextLabel_4.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_4.TextScaled = true
+TextLabel_4.TextSize = 14.000
+TextLabel_4.TextWrapped = true
+
+Jinglebellinstrumentals.Name = "Jingle bell instrumentals"
+Jinglebellinstrumentals.Parent = Frame
+Jinglebellinstrumentals.BackgroundColor3 = Color3.fromRGB(79, 79, 79)
+Jinglebellinstrumentals.Position = UDim2.new(0.0227507763, 0, 0.174603179, 0)
+Jinglebellinstrumentals.Size = UDim2.new(0, 200, 0, 50)
+Jinglebellinstrumentals.Font = Enum.Font.SourceSans
+Jinglebellinstrumentals.Text = "Play"
+Jinglebellinstrumentals.TextColor3 = Color3.fromRGB(255, 255, 255)
+Jinglebellinstrumentals.TextScaled = true
+Jinglebellinstrumentals.TextSize = 14.000
+Jinglebellinstrumentals.TextWrapped = true
+Jinglebellinstrumentals.MouseButton1Click:Connect(function()-- 1836009626
+	local hi = Instance.new("Sound")
+	hi.Name = "Sound"
+	hi.SoundId = "http://www.roblox.com/asset/?id=1838156901"
+	hi.Volume = 2
+	hi.Looped = false
+	hi.archivable = false
+	hi.Parent = game.Workspace
+
+	hi:Play()
+
+end)
+TextLabel_5.Parent = Jinglebellinstrumentals
+TextLabel_5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_5.BackgroundTransparency = 58.000
+TextLabel_5.Position = UDim2.new(0, 0, -1.20000005, 0)
+TextLabel_5.Size = UDim2.new(0, 200, 0, 50)
+TextLabel_5.Font = Enum.Font.SourceSans
+TextLabel_5.Text = "Jingle Bells Instrumental"
+TextLabel_5.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_5.TextScaled = true
+TextLabel_5.TextSize = 14.000
+TextLabel_5.TextWrapped = true
+
+Tokyomachineplay.Name = "Tokyo machine play"
+Tokyomachineplay.Parent = Frame
+Tokyomachineplay.BackgroundColor3 = Color3.fromRGB(79, 79, 79)
+Tokyomachineplay.Position = UDim2.new(0.255429149, 0, 0.174603179, 0)
+Tokyomachineplay.Size = UDim2.new(0, 200, 0, 50)
+Tokyomachineplay.Font = Enum.Font.SourceSans
+Tokyomachineplay.Text = "Play"
+Tokyomachineplay.TextColor3 = Color3.fromRGB(255, 255, 255)
+Tokyomachineplay.TextScaled = true
+Tokyomachineplay.TextSize = 14.000
+Tokyomachineplay.TextWrapped = true
+Tokyomachineplay.MouseButton1Click:Connect(function()-- 1836009626
+	local hi = Instance.new("Sound")
+	hi.Name = "Sound"
+	hi.SoundId = "http://www.roblox.com/asset/?id=5410085763"
+	hi.Volume = 2
+	hi.Looped = false
+	hi.archivable = false
+	hi.Parent = game.Workspace
+
+	hi:Play()
+
+end)
+TextLabel_6.Parent = Tokyomachineplay
+TextLabel_6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_6.BackgroundTransparency = 58.000
+TextLabel_6.Position = UDim2.new(0, 0, -1.20000005, 0)
+TextLabel_6.Size = UDim2.new(0, 200, 0, 50)
+TextLabel_6.Font = Enum.Font.SourceSans
+TextLabel_6.Text = "Tokyo Machine - PLAY"
+TextLabel_6.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_6.TextScaled = true
+TextLabel_6.TextSize = 14.000
+TextLabel_6.TextWrapped = true
 end)
 tab4:Button("Set Skybox to Zerius", "This function alaways works.", function()
     game:GetService("Lighting").Sky.SkyboxBk = "rbxassetid://11720631828"
@@ -251,7 +511,33 @@ game:GetService("Lighting").Sky.SkyboxUp = "rbxassetid://11720631828"
 	tab4:Textbox("Make your own killsult!", "Killsult maker?", true, function(t)
 		print(t)
 		game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer(t, 'All');
-		end)
+	end)
+	tab2:Button("Click Tp", "This function alaways works.", function()
+	    local player = game:GetService("Players").LocalPlayer
+local char = player.Character
+local mouse = player:GetMouse()
+local uis = game:GetService("UserInputService")
+
+local shifthold  = false
+
+mouse.Button1Down:Connect(function()
+    if shifthold then
+        char:MoveTo(mouse.Hit.p)
+    end
+end)
+
+uis.InputBegan:Connect(function(input, process)
+    if input.KeyCode == Enum.KeyCode.LeftShift or input.KeyCode == Enum.KeyCode.RightShift then
+        shifthold = true
+    end
+end)
+
+uis.InputEnded:Connect(function(input, process)
+    if input.KeyCode == Enum.KeyCode.LeftShift or input.KeyCode == Enum.KeyCode.RightShift then
+        shifthold = false
+    end
+end)
+end)
 tab4:Button("Hypixel Fly ", "This function alaways works.", function()
    
  local walkSpeed = 50
@@ -542,7 +828,7 @@ game.Players.PlayerAdded:Connect(function(newplr)
     end)
 end)
 end)
-local tab2 = win:Tab("Movement", "http://www.roblox.com/asset/?id=6023426915")
+
 tab:Button("Kill  Aura", "This function alaways works.", function()
 
    
