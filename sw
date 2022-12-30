@@ -538,6 +538,75 @@ uis.InputEnded:Connect(function(input, process)
     end
 end)
 end)
+tab3:Button("TargetHUD", "This function alaways works.", function()
+ while true do wait(0.1)
+   -- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+--   getgev,
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Frame_2 = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
+Frame.Position = UDim2.new(0.663789093, 0, 0.533713222, 0)
+Frame.Size = UDim2.new(0, 394, 0, 182)
+
+UICorner.Parent = Frame
+
+Frame_2.Parent = Frame
+Frame_2.BackgroundColor3 = Color3.fromRGB(89, 89, 89)
+Frame_2.Size = UDim2.new(0, 394, 0, 34)
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.BackgroundTransparency = 5
+TextLabel.Position = UDim2.new(0.0761421323, 0, 0.505494535, 0)
+TextLabel.Size = UDim2.new(0, 333, 0, 50)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = ""
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextScaled = true
+TextLabel.TextSize = 14.000
+TextLabel.TextWrapped = true
+local player = game.Players.LocalPlayer
+local studs = 15
+
+
+local player = game.Players.LocalPlayer
+local studs = 15
+	for __,v in pairs(game.Players:GetPlayers()) do
+		if v ~= player then
+			local distance = (v.Character.PrimaryPart.Position - player.Character.PrimaryPart.Position).Magnitude
+
+			if distance < studs then
+				TextLabel.Text = v.Name..": "..v.Character.Humanoid.Health
+			end
+		end
+	end
+end
+
+    	for __,v in pairs(game.Players:GetPlayers()) do
+		if v ~= player then
+			local distance = (v.Character.PrimaryPart.Position - player.Character.PrimaryPart.Position).Magnitude
+
+			if distance < studs then
+				TextLabel.Text = v.Name..":  "..v.Character.Humanoid.Health
+			end
+		end
+	end
+
+
+end)
 tab4:Button("Hypixel Fly ", "This function alaways works.", function()
    
  local walkSpeed = 50
