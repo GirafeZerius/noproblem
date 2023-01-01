@@ -209,6 +209,33 @@ local tab7 = win:Tab("Credits", "http://www.roblox.com/asset/?id=6023426915")
 local tab8 = win:Tab("Launcher", "http://www.roblox.com/asset/?id=6023426915")
 
 
+tab:Button("Auto Call out [Read Description!]", "Auto Call out: Does a notification when ever your walkspeed/JumpPower is too high.", function()
+
+local player = game.Players.LocalPlayer
+while true do wait(1)
+if game.Players.LocalPlayer.Character.Humanoid.WalkSpeed > 16 then
+    wait(1.2)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
+game.StarterGui:SetCore("SendNotification", {
+Title = "WalkSpeed Alert ⛰"; -- the title (ofc)
+Text = "WalkSpeed Was Detected as Higher as 16, Your original WalkSpeed is put back to normal."; -- what the text says (ofc)
+Icon = ""; -- the image if u want. 
+Duration = 5; -- how long the notification should in secounds
+})
+local hi = Instance.new("Sound")
+hi.Name = "Sound"
+hi.SoundId = "http://www.roblox.com/asset/?id=5568992074"
+hi.Volume = 2
+hi.Looped = false
+hi.archivable = false
+hi.Parent = game.Workspace
+
+if game.Players.LocalPlayer.Character.Humanoid.Health > 10 then
+hi:Play()
+end
+end
+end
+end)
 tab1:Button("Auto Equip Mega VIP [Requires 6 Wins]", "This function alaways works.", function()
 
 	-- -11, 265, 61
@@ -13333,185 +13360,3 @@ end
 end)
 
 
-agentRadius = AgentSizeIncreaseFactor * 0.5 * math.sqrt(extents.X * extents.X + extents.Z * extents.Z)
-						agentHeight = AgentSizeIncreaseFactor * extents.Y
-						agentCanJump = false
-						this.AgentCanFollowPath = true
-						this.DirectPath = directPathForVehicle
-					end
-	
-					-- Reset PrimaryPart
-					vehicle.PrimaryPart = tempPrimaryPart
-				end
-			else
-				local extents = GetCharacter():GetExtentsSize()
-				agentRadius = AgentSizeIncreaseFactor * 0.5 * math.sqrt(extents.X * extents.X + extents.Z * extents.Z)
-				agentHeight = AgentSizeIncreaseFactor * extents.Y
-				agentCanJump = (this.Humanoid.JumpPower > 0)
-				this.AgentCanFollowPath = true
-				this.DirectPath = directPathForHumanoid
-				this.DirectPathRiseFirst = this.Humanoid.Sit
-			end
-	
-			-- Build path object
-			this.pathResult = PathfindingService:CreatePath({AgentRadius = agentRadius, AgentHeight = agentHeight, AgentCanJump = agentCanJump})
-		end
-	
-		function this:Cleanup()
-			if this.stopTraverseFunc then
-				this.stopTraverseFunc()
-				this.stopTraverseFunc = nil
-			end
-	
-			if this.MoveToConn then
-				this.MoveToConn:Disconnect()
-				this.MoveToConn = nil
-			end
-	
-			if this.BlockedConn then
-				this.BlockedConn:Disconnect()
-				this.BlockedConn = nil
-			end
-	
-			if this.DiedConn then
-				this.DiedConn:Disconnect()
-				this.DiedConn = nil
-			end
-	
-			if this.SeatedConn then
-				this.SeatedConn:Disconnect()
-				this.SeatedConn = nil
-			end
-	
-			if this.TeleportedConn then
-				this.TeleportedConn:Disconnect()
-				this.TeleportedConn = nil
-			end
-	
-			this.Started = false
-		end
-	
-		function this:Cancel()
-			this.Cancelled = true
-			this:Cleanup()
-		end
-	
-		function this:IsActive()
-			return this.AgentCanFollowPath and this.Started and not this.Cancelled
-		end
-	
-		function this:OnPathInterrupted()
-			-- Stop moving
-			this.Cancelled = true
-			this:OnPointReached(false)
-		end
-	
-		function this:ComputePath()
-			if this.OriginPoint then
-				if this.PathComputed or this.PathComputing then return end
-				this.PathComputing = true
-				if this.AgentCanFollowPath then
-					if this.DirectPath then
-						this.pointList = {
-							PathWaypoint.new(this.OriginPoint, Enum.PathWaypointAction.Walk),
-							PathWaypoint.new(this.TargetPoint, this.DirectPathRiseFirst and Enum.PathWaypointAction.Jump or Enum.PathWaypointAction.Walk)
-						}
-						this.PathComputed = true
-					else
-						this.pathResult:ComputeAsync(this.OriginPoint, this.TargetPoint)
-						this.pointList = this.pathResult:GetWaypoints()
-						this.BlockedConn = this.pathResult.Blocked:Connect(function(blockedIdx) this:OnPathBlocked(blockedIdx) end)
-						this.PathComputed = this.pathResult.Status == Enum.PathStatus.Success
-					end
-				end
-				this.PathComputing = false
-			end
-		end
-	
-		function this:IsValidPath()
-			this:ComputePath()
-			return this.PathComputed and this.AgentCanFollowPath
-		end
-	
-		this.Recomputing = false
-		function this:OnPathBlocked(blockedWaypointIdx)
-			local pathBlocked = blockedWaypointIdx >= this.CurrentPoint
-			if not pathBlocked or this.Recomputing then
-				return
-			end
-	
-			this.Recomputing = true
-	
-			if this.stopTraverseFunc then
-				this.stopTraverseFunc()
-				this.stopTraverseFunc = nil
-			end
-	
-			this.OriginPoint = this.Humanoid.RootPart.CFrame.p
-	
-			this.pathResult:ComputeAsync(this.OriginPoint, this.TargetPoint)
-			this.pointList = this.pathResult:GetWaypoints()
-			if #this.pointList > 0 then
-				this.HumanoidOffsetFromPath = this.pointList[1].Position - this.OriginPoint
-			end
-			this.PathComputed = this.pathResult.Status == Enum.PathStatus.Success
-	
-			if ShowPath then
-				this.stopTraverseFunc, this.setPointFunc = ClickToMoveDisplay.CreatePathDisplay(this.pointList)
-			end
-			if this.PathComputed then
-				this.CurrentPoint = 1 -- The first waypoint is always the start location. Skip it.
-				this:OnPointReached(true) -- Move to first point
-			else
-				this.PathFailed:Fire()
-				this:Cleanup()
-			end
-	
-			this.Recomputing = false
-		end
-	
-		function this:OnRenderStepped(dt)
-			if this.Started and not this.Cancelled then
-				-- Check for Timeout (if a waypoint is not reached within the delay, we fail)
-				this.Timeout = this.Timeout + dt
-				if this.Timeout > UnreachableWaypointTimeout then
-					this:OnPointReached(false)
-					return
-				end
-	
-				-- Get Humanoid position and velocity
-				this.CurrentHumanoidPosition = this.Humanoid.RootPart.Position + this.HumanoidOffsetFromPath
-				this.CurrentHumanoidVelocity = this.Humanoid.RootPart.Velocity
-	
-				-- Check if it has reached some waypoints
-				while this.Started and this:IsCurrentWaypointReached() do
-					this:OnPointReached(true)
-				end
-	
-				-- If still started, update actions
-				if this.Started then
-					-- Move action
-					this.NextActionMoveDirection = this.CurrentWaypointPosition - this.CurrentHumanoidPosition
-					if this.NextActionMoveDirection.Magnitude > ALMOST_ZERO then
-						this.NextActionMoveDirection = this.NextActionMoveDirection.Unit
-					else
-						this.NextActionMoveDirection = ZERO_VECTOR3
-					end
-					-- Jump action
-					if this.CurrentWaypointNeedsJump then
-						this.NextActionJump = true
-						this.CurrentWaypointNeedsJump = false	-- Request jump only once
-					else
-						this.NextActionJump = false
-					end
-				end
-			end
-		end
-	
-		function this:IsCurrentWaypointReached()
-			local reached = false
-	
-			-- Check we do have a plane, if not, we consider the waypoint reached
-			if this.CurrentWaypointPlaneNormal ~= ZERO_VECTOR3 then
-				-- Compute distance of Humanoid from destination plane
-				local dist = this.CurrentWaypointPlaneNormal:Dot(this.
