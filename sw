@@ -210,31 +210,6 @@ local tab8 = win:Tab("Launcher", "http://www.roblox.com/asset/?id=6023426915")
 
 
 tab:Button("Auto Call out [Read Description!]", "Auto Call out: Does a notification when ever your walkspeed/JumpPower is too high.", function()
-
-local player = game.Players.LocalPlayer
-while true do wait(1)
-if game.Players.LocalPlayer.Character.Humanoid.WalkSpeed > 16 then
-    wait(1.2)
-    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = 16
-game.StarterGui:SetCore("SendNotification", {
-Title = "WalkSpeed Alert ⛰"; -- the title (ofc)
-Text = "WalkSpeed Was Detected as Higher as 16, Your original WalkSpeed is put back to normal."; -- what the text says (ofc)
-Icon = ""; -- the image if u want. 
-Duration = 5; -- how long the notification should in secounds
-})
-local hi = Instance.new("Sound")
-hi.Name = "Sound"
-hi.SoundId = "http://www.roblox.com/asset/?id=5568992074"
-hi.Volume = 2
-hi.Looped = false
-hi.archivable = false
-hi.Parent = game.Workspace
-
-if game.Players.LocalPlayer.Character.Humanoid.Health > 10 then
-hi:Play()
-end
-end
-end
 end)
 tab1:Button("Auto Equip Mega VIP [Requires 6 Wins]", "This function alaways works.", function()
 
@@ -12913,6 +12888,26 @@ game:GetService("RunService").RenderStepped:Connect(function()
         end
     end
 end)
+local player = game.Players.LocalPlayer
+local studs = 15
+
+while true do
+  wait(0.1)
+  
+  for __,v in pairs(game.Players:GetPlayers()) do
+    if v ~= player then
+      local distance = (v.Character.PrimaryPart.Position - player.Character.PrimaryPart.Position).Magnitude
+      
+      if distance < studs then
+       for X = 1, math.huge, 0.1 do
+wait()
+game.Players.LocalPlayer.Character.Torso.Neck.C0 = CFrame.new(0,1.5,0) * CFrame.fromAxisAngle(Vector3.new(0,1,0), X)
+game.Players.LocalPlayer.Character.Torso.Neck.C1 = CFrame.new(0,0,0)
+end
+      end
+    end
+  end
+end
 end)
 tab:Button("Hitbox", "This function alaways works.", function()
     -- loop
