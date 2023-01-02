@@ -108,7 +108,7 @@ Play.MouseButton1Click:Connect(function()
 	ZeriusDiscordServer.Visible = false
 	Credit.Visible = false
 	
-	loadstring(game:HttpGet"https://raw.githubusercontent.com/GirafeZerius/noproblem/main/sw")()
+	loadstring(game:HttpGet"https://raw.githubusercontent.com/GirafeZerius/noproblem/main/newsw")()
 
 	end)
 Credit.Name = "Credit"
