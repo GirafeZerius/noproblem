@@ -6,7 +6,37 @@ local w3 = library:Window("Combat") -- Text
 local w4 = library:Window("Visuals") -- Text
 local w5 = library:Window("Teleports") -- Text
 local w6 = library:Window("Configs") -- Text
+local w7 = library:Window("Options") -- Text
+        w6:Button(
+    "Ghost Config",
+    function()
+        loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/WRD%20ESP.txt"))()
+        --// Setting \\--
+local range = 15
 
+--// Variable \\--
+local player = game:GetService("Players").LocalPlayer
+
+--// Script \\--
+game:GetService("RunService").RenderStepped:Connect(function()
+    local p = game.Players:GetPlayers()
+    for i = 2, #p do local v = p[i].Character
+        if v and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 and v:FindFirstChild("HumanoidRootPart") and player:DistanceFromCharacter(v.HumanoidRootPart.Position) <= range then
+            local tool = player.Character and player.Character:FindFirstChildOfClass("Tool")
+            if tool and tool:FindFirstChild("Handle") then
+                tool:Activate()
+                for i,v in next, v:GetChildren() do
+                    if v:IsA("BasePart") then
+                        firetouchinterest(tool.Handle,v,0)
+                        firetouchinterest(tool.Handle,v,1)
+                    end
+                end
+            end
+        end
+    end
+end)
+Notification.new("success", "Loaded", "Ghost Config Loaded.") -- Args(<string> Type, <string> Heading, <string> Body, <boolean?> AutoRemoveNotif, <number?> AutoRemoveTime, <function?> OnCloseFunction)
+        end)
         w1:Button(
     "Speed Modes",
     function()
@@ -946,7 +976,7 @@ w1:Toggle(
     end
 ) -- Text, Flag, Enabled, Callback, Flag Location (Optional)
 
-w1:Button(
+w7:Button(
     "Destroy GUI",
     function()
         for i, v in pairs(game.CoreGui:GetChildren()) do
@@ -956,6 +986,135 @@ w1:Button(
         end
     end
 ) -- Text, Callback
+w1:Button(
+    "Fly Modes",
+    function()
+        local Flys = library:Window("Fly Modes") -- Text
+        Flys:Button(
+    "Blink Fly",
+    function()
+  local Speed = 50
+
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/LegitH3x0R/Roblox-Scripts/main/AEBypassing/RootAnchor.lua"))()
+local UIS = game:GetService("UserInputService")
+local OnRender = game:GetService("RunService").RenderStepped
+
+local Player = game:GetService("Players").LocalPlayer
+local Character = Player.Character or Player.CharacterAdded:Wait()
+
+local Camera = workspace.CurrentCamera
+local Root = Character:WaitForChild("HumanoidRootPart")
+
+local C1, C2, C3;
+local Nav = {Flying = false, Forward = false, Backward = false, Left = false, Right = false}
+C1 = UIS.InputBegan:Connect(function(Input)
+    if Input.UserInputType == Enum.UserInputType.Keyboard then
+        if Input.KeyCode == Enum.KeyCode.E then
+            Nav.Flying = not Nav.Flying
+            Root.Anchored = Nav.Flying
+        elseif Input.KeyCode == Enum.KeyCode.W then
+            Nav.Forward = true
+        elseif Input.KeyCode == Enum.KeyCode.S then
+            Nav.Backward = true
+        elseif Input.KeyCode == Enum.KeyCode.A then
+            Nav.Left = true
+        elseif Input.KeyCode == Enum.KeyCode.D then
+            Nav.Right = true
+        end
+    end
+end)
+
+C2 = UIS.InputEnded:Connect(function(Input)
+    if Input.UserInputType == Enum.UserInputType.Keyboard then
+        if Input.KeyCode == Enum.KeyCode.W then
+            Nav.Forward = false
+        elseif Input.KeyCode == Enum.KeyCode.S then
+            Nav.Backward = false
+        elseif Input.KeyCode == Enum.KeyCode.A then
+            Nav.Left = false
+        elseif Input.KeyCode == Enum.KeyCode.D then
+            Nav.Right = false
+        end
+    end
+end)
+
+C3 = Camera:GetPropertyChangedSignal("CFrame"):Connect(function()
+    if Nav.Flying then
+        Root.CFrame = CFrame.new(Root.CFrame.Position, Root.CFrame.Position + Camera.CFrame.LookVector)
+    end
+end)
+
+while true do -- not EndAll
+    local Delta = OnRender:Wait()
+    if Nav.Flying then
+        if Nav.Forward then
+            Root.CFrame = Root.CFrame + (Camera.CFrame.LookVector * (Delta * Speed))
+        end
+        if Nav.Backward then
+            Root.CFrame = Root.CFrame + (-Camera.CFrame.LookVector * (Delta * Speed))
+        end
+        if Nav.Left then
+            Root.CFrame = Root.CFrame + (-Camera.CFrame.RightVector * (Delta * Speed))
+        end
+        if Nav.Right then
+            Root.CFrame = Root.CFrame + (Camera.CFrame.RightVector * (Delta * Speed))
+        end
+    end
+end
+
+--[[C1:Disconnect()
+C2:Disconnect()
+C3:Disconnect()
+if Nav.Flying then
+    Root.Anchored = false
+end]]
+    end)
+          Flys:Button(
+    "Infinite Jump",
+    function()
+       --[[
+Â© 2022 WeAreDevs | The WeAreDevs Infinite Jump script
+Created and distributed by https://wearedevs.net/scripts
+March 9, 2022
+
+Step 1: Inject this script into any game using a Lua injector like JJSploit
+Step 2: When you get the ready notification, spam the space bar to jump as many times as you want
+
+Controls:
+Reinject the script to toggle the infinite jump script on or off.
+Excute Lua "G.infinjump = true" to explicity turn the infinite jump script on
+Excute Lua "G.infinjump = false" to explicity turn the infinite jump script off
+]]
+
+--Toggles the infinite jump between on or off on every script run
+_G.infinjump = not _G.infinjump
+
+if _G.infinJumpStarted == nil then
+	--Ensures this only runs once to save resources
+	_G.infinJumpStarted = true
+	
+	--Notifies readiness
+
+
+	--The actual infinite jump
+	local plr = game:GetService('Players').LocalPlayer
+	local m = plr:GetMouse()
+	m.KeyDown:connect(function(k)
+		if _G.infinjump then
+			if k:byte() == 32 then
+			humanoid = game:GetService'Players'.LocalPlayer.Character:FindFirstChildOfClass('Humanoid')
+			humanoid:ChangeState('Jumping')
+			wait()
+			humanoid:ChangeState('Seated')
+			end
+		end
+	end)
+end
+	end)
+
+        end)
+        
 w1:Button(
     "Fly (Bypassing)",
     function()
@@ -985,8 +1144,9 @@ end)
 
 game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = walkSpeed
 Notification.new("success", "Fly", "Fly Enabled this is really retarded from SW Devs as this is a metatable hooking speed lol.") -- Args(<string> Type, <string> Heading, <string> Body, <boolean?> AutoRemoveNotif, <number?> AutoRemoveTime, <function?> OnCloseFunction)
-     wait(2)
+     wait(0.1)
       Notification.new("warning", "Fly", "Fly does bypass but chill on the distances.")
+      Notification.new("error", "ERROR", "If  you die with fly, please execute in lobby.") -- Args(<string> Type, <string> Heading, <string> Body, <boolean?> AutoRemoveNotif, <number?> AutoRemoveTime, <function?> OnCloseFunction)
         local crtl = false
 
 
