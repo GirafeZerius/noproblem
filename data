@@ -1,6 +1,44 @@
 if game.PlaceId == 286090429 then
 loadstring(game:HttpGet"https://pastebin.com/raw/uTxa24w8")()
 end
+if game.PlaceId == 142823291 then
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
+    function CreateGun( ... )
+game.Workspace.GunDrop.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(2,0,0)
+end
+
+
+local win = Flux:Window("ZeriusHub", "Murder Mystery 2", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local tab = win:Tab("Visuals", "http://www.roblox.com/asset/?id=6023426915")
+local tab1 = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
+
+tab:Button("ESP", "This function allows you to know who is Sherrif, innocent and murder..", function()
+ loadstring(game:HttpGet("https://raw.githubusercontent.com/Ihaveash0rtnamefordiscord/Releases/main/MurderMystery2HighlightESP"))(' Watermelon ?')
+end)
+tab1:Button("Create a coin.", "This function allows you to create  a coin, to where you can claim it.", function()
+   for i, v in pairs(game.Workspace:GetDescendants()) do
+      if v.Name == "Coin" then
+         v.CFrame = game.Players.LocalPlayer.Character.Head.CFrame
+         end
+     end
+end)
+-- -147, 143, -1
+
+tab1:Button("God Mode", "This function is to be invicible.", function()
+game.Players.LocalPlayer.Character.Humanoid:Remove()
+Instance.new('Humanoid', game.Players.LocalPlayer.Character)
+end)
+tab1:Button("TP to lobby", "This function teleports to the lobby.", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-147, 143, -1)
+end)
+tab1:Button("Teleport Gun", "This function teleports to the lobby.", function()
+game.Workspace.GunDrop.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(2,0,0)
+end)
+tab1:Slider("Gravity", "Makes your character's gravity lower or higher, to your liking..", 0, 100,16,function(t)
+print(t)
+game.Workspace.Gravity = t
+end)
+end
 
 if game.PlaceId == 4620170611 then
 loadstring(game:HttpGet"https://pastebin.com/raw/S9AeH83s")()
