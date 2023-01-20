@@ -34,9 +34,21 @@ end)
 tab1:Button("Teleport Gun", "This function teleports to the lobby.", function()
 game.Workspace.GunDrop.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(2,0,0)
 end)
-tab1:Slider("Gravity", "Makes your character's gravity lower or higher, to your liking..", 0, 100,16,function(t)
+tab1:Slider("WalkSpeed", "Makes your character's WalkSpeed lower or higher, to your liking.", 0, 100,16,function(walk)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = walk
+
+end)
+tab1:Slider("Gravity", "Makes your character's Gravity higher or lower, to your liking.", 0, 100,16,function(t)
 print(t)
 game.Workspace.Gravity = t
+end)
+tab1:Slider("JumpPower", "Makes your character's JumpPower higher or lower, to your liking.", 0, 100,16,function(jump)
+print(t)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = jump
+end)
+tab1:Slider("Health", "Makes your character's Health higher or lower, to your liking.", 0, 100,16,function(Health)
+print(t)
+game:GetService("Players").LocalPlayer.Character.Humanoid.Health = Health
 end)
 end
 
