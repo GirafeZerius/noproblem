@@ -1,4 +1,34 @@
+-- https://pastebin.com/raw/wJAu4wP0
+if game.PlaceId == 3101667897 then
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
+    
 
+local win = Flux:Window("ZeriusHub", "Legends Of Speed ⚡", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local tab = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
+
+tab:Button("Auto Level Up", "This function alaways works.", function()
+loadstring(game:HttpGet('https://pastebin.com/raw/wJAu4wP0'))()
+end)
+tab:Button("ESP", "This function alaways works.", function()
+loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/WRD%20ESP.txt"))()
+end)
+tab:Slider("WalkSpeed", "Makes your character's WalkSpeed lower or higher, to your liking.", 0, 88888888888888,16,function(walk)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = walk
+
+end)
+tab:Slider("Gravity", "Makes your character's Gravity higher or lower, to your liking.", 0, 100,16,function(t)
+print(t)
+game.Workspace.Gravity = t
+end)
+tab:Slider("JumpPower", "Makes your character's JumpPower higher or lower, to your liking.", 0, 100,16,function(jump)
+print(t)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = jump
+end)
+tab:Slider("Health", "Makes your character's Health higher or lower, to your liking.", 0, 100,16,function(Health)
+print(t)
+game:GetService("Players").LocalPlayer.Character.Humanoid.Health = Health
+end)
+end
 -- 8888615802
 
 if game.PlaceId == 8888615802 then
