@@ -1,3 +1,47 @@
+
+if game.PlaceId == 189707 then
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
+    
+
+local win = Flux:Window("ZeriusHub", "Natural Disaster Survival", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local tab = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
+local tab1 = win:Tab("Movement", "http://www.roblox.com/asset/?id=6023426915")
+tab:Button("No Fall", "This function alaways works.", function()
+ game.Players.LocalPlayer.Character.FallDamageScript:Destroy()
+end)
+tab:Button("Enable Vote GUI", "This function alaways works.", function()
+   votemenu = game.Players.LocalPlayer.PlayerGui.MainGui.MapVotePage
+
+votemenu.Visible=true
+end)
+tab:Button("Disable Vote GUI", "This function alaways works.", function()
+votemenu = game.Players.LocalPlayer.PlayerGui.MainGui.MapVotePage
+
+votemenu.Visible=false
+end)
+tab:Button("ESP", "This function alaways works.", function()
+loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/WRD%20ESP.txt"))()
+end)
+
+tab1:Slider("WalkSpeed", "Makes your character's WalkSpeed lower or higher, to your liking.", 0, 100,16,function(walk)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = walk
+
+end)
+tab1:Slider("Gravity", "Makes your character's Gravity higher or lower, to your liking.", 0, 100,16,function(t)
+print(t)
+game.Workspace.Gravity = t
+end)
+tab1:Slider("JumpPower", "Makes your character's JumpPower higher or lower, to your liking.", 0, 100,16,function(jump)
+print(t)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = jump
+end)
+tab1:Slider("Health", "Makes your character's Health higher or lower, to your liking.", 0, 100,16,function(Health)
+print(t)
+game:GetService("Players").LocalPlayer.Character.Humanoid.Health = Health
+end)
+end
+
+
 -- https://pastebin.com/raw/wJAu4wP0
 if game.PlaceId == 3101667897 then
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
