@@ -7,7 +7,61 @@ local w4 = library:Window("Visuals") -- Text
 local w5 = library:Window("Teleports") -- Text
 local w6 = library:Window("Configs") -- Text
 local w7 = library:Window("Options") -- Text
-        w6:Button(
+local w8 = library:Window("ZerMeme") -- Text
+local w9 = library:Window("ClientSided") -- Text
+
+w9:Button(
+    "New Btools",
+function()
+    loadstring(game:GetObjects("rbxassetid://1059691823")[1].Source)()
+
+    end)
+w9:Button(
+    "Old Btools",
+function()
+    loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/BTools.txt"))()
+
+
+        end)
+   w9:Label("This is ClientSided = only work on your screen") -- Text
+   w8:Button(
+    "KillSults",
+    function()
+local KillSults = library:Window("KillSults") -- Text
+
+ KillSults:Button(
+    "KillSult 1",
+    function()
+game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Roses are red, violets are blue and you are trash and you are noob.","All")
+
+end)
+ KillSults:Button(
+    "KillSult 2",
+    function()
+game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Your aim is so bad i dont even know how did you click the Play button on skywars?","All")
+
+end)
+ KillSults:Button(
+    "KillSult 3",
+    function()
+game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("LALALALA YOU ARE SO TRASH STOP PLAYING!","All")
+
+end)
+ KillSults:Button(
+    "KillSult 4",
+    function()
+game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Your the type of guy that pretends to be good at the game for clicking more than 2 cps.","All")
+
+end)
+ KillSults:Button(
+    "KillSult 5",
+    function()
+game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Mad? 3r4VxzxxJE (Join the DISSSSJJJJCOOOORDDDDJ) :) we will explain how trash you are there.","All")
+
+end)
+end)
+
+     w6:Button(
     "Ghost Config",
     function()
         loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/WRD%20ESP.txt"))()
