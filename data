@@ -1,4 +1,12 @@
-
+if game.PlaceId == 10277607801 then
+wait(1.2)
+game.StarterGui:SetCore("SendNotification", {
+Title = "ERROR"; -- the title (ofc)
+Text = "Execute in game, not in lobby."; -- what the text says (ofc)
+Icon = "rbxassetid://57254792"; -- the image if u want. 
+Duration = 5; -- how long the notification should in secounds
+})
+end
 if game.PlaceId == 3851622790 then
 wait(1.2)
 game.StarterGui:SetCore("SendNotification", {
