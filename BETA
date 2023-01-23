@@ -1,3 +1,96 @@
+local TitleScreenGui = Instance.new("ScreenGui")
+local Maintitle = Instance.new("TextLabel")
+local ArrayList = Instance.new("ScreenGui")
+local KillAuraTitle = Instance.new("TextLabel")
+local FlyTitle = Instance.new("TextLabel")
+local SpeedTitle = Instance.new("TextLabel")
+local DisablerTitle = Instance.new("TextLabel")
+local DisablerModeTitle = Instance.new("TextLabel")
+
+--Properties:
+
+TitleScreenGui.Name = "TitleScreenGui"
+TitleScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+TitleScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Maintitle.Name = "Maintitle"
+Maintitle.Parent = TitleScreenGui
+Maintitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Maintitle.BackgroundTransparency = 85.000
+Maintitle.Position = UDim2.new(-0.00923981518, 0, 0.0102564087, 0)
+Maintitle.Size = UDim2.new(0, 200, 0, 50)
+Maintitle.Font = Enum.Font.ArialBold
+Maintitle.Text = "Zerius"
+Maintitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+Maintitle.TextSize = 35.000
+
+ArrayList.Name = "ArrayList"
+ArrayList.Parent = TitleScreenGui
+ArrayList.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+KillAuraTitle.Name = "KillAuraTitle"
+KillAuraTitle.Parent = ArrayList
+KillAuraTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+KillAuraTitle.BackgroundTransparency = 85.000
+KillAuraTitle.Position = UDim2.new(-0.00167996646, 0, 0.080341883, 0)
+KillAuraTitle.Size = UDim2.new(0, 200, 0, 50)
+KillAuraTitle.Visible = false
+KillAuraTitle.Font = Enum.Font.Ubuntu
+KillAuraTitle.Text = "Kill Aura"
+KillAuraTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+KillAuraTitle.TextSize = 35.000
+
+FlyTitle.Name = "FlyTitle"
+FlyTitle.Parent = ArrayList
+FlyTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FlyTitle.BackgroundTransparency = 85.000
+FlyTitle.Position = UDim2.new(-0.0172196552, 0, 0.123076931, 0)
+FlyTitle.Size = UDim2.new(0, 200, 0, 50)
+FlyTitle.Visible = false
+FlyTitle.Font = Enum.Font.Ubuntu
+FlyTitle.Text = "Fly"
+FlyTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+FlyTitle.TextSize = 35.000
+
+SpeedTitle.Name = "SpeedTitle"
+SpeedTitle.Parent = ArrayList
+SpeedTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SpeedTitle.BackgroundTransparency = 85.000
+SpeedTitle.Position = UDim2.new(-0.00587988179, 0, 0.16495727, 0)
+SpeedTitle.Size = UDim2.new(0, 200, 0, 50)
+SpeedTitle.Visible = false
+SpeedTitle.Font = Enum.Font.Ubuntu
+SpeedTitle.Text = "Speed"
+SpeedTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+SpeedTitle.TextSize = 35.000
+
+DisablerTitle.Name = "DisablerTitle"
+DisablerTitle.Parent = ArrayList
+DisablerTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DisablerTitle.BackgroundTransparency = 85.000
+DisablerTitle.Position = UDim2.new(-0.00587988179, 0, 0.04529915, 0)
+DisablerTitle.Size = UDim2.new(0, 200, 0, 50)
+DisablerTitle.Font = Enum.Font.Ubuntu
+DisablerTitle.Text = "Disabler"
+DisablerTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+DisablerTitle.TextSize = 35.000
+
+DisablerModeTitle.Name = "DisablerModeTitle"
+DisablerModeTitle.Parent = DisablerTitle
+DisablerModeTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DisablerModeTitle.BackgroundTransparency = 85.000
+DisablerModeTitle.Position = UDim2.new(0.697780371, 0, -0.01692307, 0)
+DisablerModeTitle.Size = UDim2.new(0, 200, 0, 50)
+DisablerModeTitle.Font = Enum.Font.Ubuntu
+DisablerModeTitle.Text = "(Skywars)"
+DisablerModeTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+DisablerModeTitle.TextSize = 35.000
+
+-- Scripts:
+
+
+        
+
 local library = loadstring(game.HttpGet(game, "https://raw.githubusercontent.com/bloodball/-back-ups-for-libs/main/0x"))()
 local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
 local w2 = library:Window("Player") -- Text
@@ -7,61 +100,7 @@ local w4 = library:Window("Visuals") -- Text
 local w5 = library:Window("Teleports") -- Text
 local w6 = library:Window("Configs") -- Text
 local w7 = library:Window("Options") -- Text
-local w8 = library:Window("ZerMeme") -- Text
-local w9 = library:Window("ClientSided") -- Text
-
-w9:Button(
-    "New Btools",
-function()
-    loadstring(game:GetObjects("rbxassetid://1059691823")[1].Source)()
-
-    end)
-w9:Button(
-    "Old Btools",
-function()
-    loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/BTools.txt"))()
-
-
-        end)
-   w9:Label("This is ClientSided = only work on your screen") -- Text
-   w8:Button(
-    "KillSults",
-    function()
-local KillSults = library:Window("KillSults") -- Text
-
- KillSults:Button(
-    "KillSult 1",
-    function()
-game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Roses are red, violets are blue and you are trash and you are noob.","All")
-
-end)
- KillSults:Button(
-    "KillSult 2",
-    function()
-game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Your aim is so bad i dont even know how did you click the Play button on skywars?","All")
-
-end)
- KillSults:Button(
-    "KillSult 3",
-    function()
-game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("LALALALA YOU ARE SO TRASH STOP PLAYING!","All")
-
-end)
- KillSults:Button(
-    "KillSult 4",
-    function()
-game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Your the type of guy that pretends to be good at the game for clicking more than 2 cps.","All")
-
-end)
- KillSults:Button(
-    "KillSult 5",
-    function()
-game.ReplicatedStorage.DefaultChatSystemChatEvents.SayMessageRequest:FireServer("Mad? 3r4VxzxxJE (Join the DISSSSJJJJCOOOORDDDDJ) :) we will explain how trash you are there.","All")
-
-end)
-end)
-
-     w6:Button(
+        w6:Button(
     "Ghost Config",
     function()
         loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/WRD%20ESP.txt"))()
@@ -90,7 +129,8 @@ game:GetService("RunService").RenderStepped:Connect(function()
     end
 end)
 Notification.new("success", "Loaded", "Ghost Config Loaded.") -- Args(<string> Type, <string> Heading, <string> Body, <boolean?> AutoRemoveNotif, <number?> AutoRemoveTime, <function?> OnCloseFunction)
-        end)
+     KillAuraTitle.Visible = true
+   end)
         w1:Button(
     "Speed Modes",
     function()
@@ -98,6 +138,7 @@ Notification.new("success", "Loaded", "Ghost Config Loaded.") -- Args(<string> T
         Speed:Button(
     "BHOP",
     function()
+SpeedTitle.Visible = true
         local walkSpeed = 25
 
 
@@ -133,6 +174,7 @@ end
     50,
     800,
     function(value)
+SpeedTitle.Visible = true
      local walkSpeed = value
 
 
@@ -167,6 +209,7 @@ game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = walkSpeed
 w6:Button(
     "Load Blatant Config",
     function()
+KillAuraTitle.Visible = true
         --// Setting \\--
 local range = 15
 
@@ -913,7 +956,7 @@ end
 w3:Button(
     "KillAura",
     function()
-    
+    KillAuraTitle.Visible = true
 --// Setting \\--
 local range = 15
 
@@ -940,7 +983,26 @@ game:GetService("RunService").RenderStepped:Connect(function()
 end)
 Notification.new("success", "AURA", "KillAura Enabled.") -- Args(<string> Type, <string> Heading, <string> Body, <boolean?> AutoRemoveNotif, <number?> AutoRemoveTime, <function?> OnCloseFunction)
 end)
+ w2:Button(
+    "Phase",
+    function()
+game.Players.LocalPlayer.Character.Humanoid.MaxHealth = math.huge
+game.Players.LocalPlayer.Character.Humanoid.Health = math.huge
+while true do
+ game:GetService("RunService").Stepped:wait()
+ game.Players.LocalPlayer.Character.Head.CanCollide = false
+ game.Players.LocalPlayer.Character.Torso.CanCollide = false
+end
 
+
+wait(1.2)
+game.StarterGui:SetCore("SendNotification", {
+Title = "Phase Activated"; -- the title (ofc)
+Text = ""; -- what the text says (ofc)
+Icon = "rbxassetid://57254792"; -- the image if u want. 
+Duration = 5; -- how long the notification should in secounds
+})
+end)
 
         w2:Button(
     "Blink",
@@ -1047,6 +1109,8 @@ w1:Button(
         Flys:Button(
     "Blink Fly",
     function()
+FlyTitle.Visible = true
+
   local Speed = 50
 
 
@@ -1127,6 +1191,7 @@ end]]
           Flys:Button(
     "Infinite Jump",
     function()
+FlyTitle.Visible = true
        --[[
 Â© 2022 WeAreDevs | The WeAreDevs Infinite Jump script
 Created and distributed by https://wearedevs.net/scripts
@@ -1172,6 +1237,7 @@ end
 w1:Button(
     "Fly (Bypassing)",
     function()
+FlyTitle.Visible = true
           local walkSpeed = 250
 
 
@@ -1237,5 +1303,129 @@ end
  wait(2)
 
         end)
-        
-        
+        -- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+while true do wait(3)
+if  game:GetService("Players").LocalPlayer.Character.Humanoid.Health < 1 then
+-- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local TitleScreenGui = Instance.new("ScreenGui")
+local Maintitle = Instance.new("TextLabel")
+local ArrayList = Instance.new("ScreenGui")
+local KillAuraTitle = Instance.new("TextLabel")
+local FlyTitle = Instance.new("TextLabel")
+local SpeedTitle = Instance.new("TextLabel")
+local DisablerTitle = Instance.new("TextLabel")
+local DisablerModeTitle = Instance.new("TextLabel")
+
+--Properties:
+
+TitleScreenGui.Name = "TitleScreenGui"
+TitleScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+TitleScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Maintitle.Name = "Maintitle"
+Maintitle.Parent = TitleScreenGui
+Maintitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Maintitle.BackgroundTransparency = 85.000
+Maintitle.Position = UDim2.new(-0.00923981518, 0, 0.0102564087, 0)
+Maintitle.Size = UDim2.new(0, 200, 0, 50)
+Maintitle.Font = Enum.Font.ArialBold
+Maintitle.Text = "Zerius"
+Maintitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+Maintitle.TextSize = 35.000
+
+ArrayList.Name = "ArrayList"
+ArrayList.Parent = TitleScreenGui
+ArrayList.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+KillAuraTitle.Name = "KillAuraTitle"
+KillAuraTitle.Parent = ArrayList
+KillAuraTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+KillAuraTitle.BackgroundTransparency = 85.000
+KillAuraTitle.Position = UDim2.new(-0.00167996646, 0, 0.080341883, 0)
+KillAuraTitle.Size = UDim2.new(0, 200, 0, 50)
+KillAuraTitle.Visible = false
+KillAuraTitle.Font = Enum.Font.Ubuntu
+KillAuraTitle.Text = "Kill Aura"
+KillAuraTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+KillAuraTitle.TextSize = 35.000
+
+FlyTitle.Name = "FlyTitle"
+FlyTitle.Parent = ArrayList
+FlyTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+FlyTitle.BackgroundTransparency = 85.000
+FlyTitle.Position = UDim2.new(-0.0172196552, 0, 0.123076931, 0)
+FlyTitle.Size = UDim2.new(0, 200, 0, 50)
+FlyTitle.Visible = false
+FlyTitle.Font = Enum.Font.Ubuntu
+FlyTitle.Text = "Fly"
+FlyTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+FlyTitle.TextSize = 35.000
+
+SpeedTitle.Name = "SpeedTitle"
+SpeedTitle.Parent = ArrayList
+SpeedTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SpeedTitle.BackgroundTransparency = 85.000
+SpeedTitle.Position = UDim2.new(-0.00587988179, 0, 0.16495727, 0)
+SpeedTitle.Size = UDim2.new(0, 200, 0, 50)
+SpeedTitle.Visible = false
+SpeedTitle.Font = Enum.Font.Ubuntu
+SpeedTitle.Text = "Speed"
+SpeedTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+SpeedTitle.TextSize = 35.000
+
+DisablerTitle.Name = "DisablerTitle"
+DisablerTitle.Parent = ArrayList
+DisablerTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DisablerTitle.BackgroundTransparency = 85.000
+DisablerTitle.Position = UDim2.new(-0.00587988179, 0, 0.04529915, 0)
+DisablerTitle.Size = UDim2.new(0, 200, 0, 50)
+DisablerTitle.Font = Enum.Font.Ubuntu
+DisablerTitle.Text = "Disabler"
+DisablerTitle.TextColor3 = Color3.fromRGB(0, 0, 0)
+DisablerTitle.TextSize = 35.000
+
+DisablerModeTitle.Name = "DisablerModeTitle"
+DisablerModeTitle.Parent = DisablerTitle
+DisablerModeTitle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DisablerModeTitle.BackgroundTransparency = 85.000
+DisablerModeTitle.Position = UDim2.new(0.697780371, 0, -0.01692307, 0)
+DisablerModeTitle.Size = UDim2.new(0, 200, 0, 50)
+DisablerModeTitle.Font = Enum.Font.Ubuntu
+DisablerModeTitle.Text = "(Skywars)"
+DisablerModeTitle.TextColor3 = Color3.fromRGB(255, 255, 255)
+DisablerModeTitle.TextSize = 35.000
+
+-- Scripts:
+
+local function FWGUOP_fake_script() -- Maintitle.LocalScript 
+	local script = Instance.new('LocalScript', Maintitle)
+
+	local delay2 = 0.5 
+	local TextLabel = script.Parent 
+	while true do  wait(0.1)
+		TextLabel.TextColor3 = Color3.new(255, 0, 0) 
+		wait(delay2) 
+		TextLabel.TextColor3 = Color3.new(1, 0.333333, 0) 
+		wait(delay2) 
+		TextLabel.TextColor3 = Color3.new(1, 1, 0) 
+		wait(delay2) 
+		TextLabel.TextColor3 = Color3.new(0.333333, 1, 0) 
+		wait(delay2) 
+		TextLabel.TextColor3 = Color3.new(0, 0.482353, 1)
+		wait(delay2) 
+		TextLabel.TextColor3 = Color3.new(0.333333, 0, 0.498039)
+		wait(delay2) 
+	end
+end
+coroutine.wrap(FWGUOP_fake_script)()
+
+end
+end
