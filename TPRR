@@ -1,0 +1,30 @@
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
+    
+
+local win = Flux:Window("ZeriusHub", "TPRR [🎄 OC CREATOR ]", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local tab = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
+
+tab:Button("AutoFarm", "This function allows you to autofarm tapes for coins.", function()
+  --BROUGHT TO YOU BY RSCRIPTS.NET!--
+
+local Player = game.Players.LocalPlayer
+local char = Player.Character.HumanoidRootPart
+while wait(3) do
+if game.Workspace:WaitForChild("Tape") then
+   game.Workspace.Tape.CFrame = char.CFrame
+   else
+       print("Couldn't find Tape")
+end
+end
+end)
+tab:Button("AntiAFK", "This function allows to be AFK forever.", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/KazeOnTop/Rice-Anti-Afk/main/Wind", true))()
+end)
+tab:Slider("WalkSpeed", "Makes your character's WalkSpeed lower or higher, to your liking.", 0, 100,16,function(walk)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = walk
+
+end)
+tab:Slider("JumpPower", "Makes your character's JumpPower lower or higher, to your liking.", 0, 100,16,function(Jump)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = Jump
+
+end)
