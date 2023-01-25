@@ -1,3 +1,37 @@
+if game.PlaceId == 373513488
+then
+   
+game.StarterGui:SetCore("SendNotification", {
+Title = "Go in a game!"; -- the title (ofc)
+Text = "Security Breach, FNAF 1, FNAF 2, FNAF 3, FNAF 4, FNAF SL, FNAF UCN. "; -- what the text says (ofc)
+Icon = "rbxassetid://57254792"; -- the image if u want. 
+Duration = 5; -- how long the notification should in secounds
+})
+end
+games = 
+
+"Security Breach, FNAF 1, FNAF 2, FNAF 3, FNAF 4, FNAF SL, FNAF UCN.                                                                                                                                                                                                                         "
+
+if game.PlaceId == 8344998875 then
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/GirafeZerius/noproblem/main/TPRR")()
+end
+if game.PlaceId == 599951915 then
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/GirafeZerius/noproblem/main/TPRR")()
+end
+if game.PlaceId == 599952427 then
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/GirafeZerius/noproblem/main/TPRR")()
+end
+if game.PlaceId == 2588849144 then
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/GirafeZerius/noproblem/main/TPRR")()
+end
+if game.PlaceId == 2588857580 then
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/GirafeZerius/noproblem/main/TPRR")()
+end
+if game.PlaceId == 4691657826 then
+    loadstring(game:HttpGet"https://raw.githubusercontent.com/GirafeZerius/noproblem/main/TPRR")()
+    end
+
+
 if game.PlaceId == 10277607801 then
 wait(1.2)
 game.StarterGui:SetCore("SendNotification", {
