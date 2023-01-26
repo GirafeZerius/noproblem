@@ -100,6 +100,172 @@ local w4 = library:Window("Visuals") -- Text
 local w5 = library:Window("Teleports") -- Text
 local w6 = library:Window("Configs") -- Text
 local w7 = library:Window("Options") -- Text
+ 
+ w2:Button(
+    "Sword Code",
+    function()
+        game:GetService("Players").VinceArcade50.PlayerGui.ScreenGui.PromoGui.TextBoxCode.Text = "sword"
+wait(1.2)
+game.StarterGui:SetCore("SendNotification", {
+Title = "PLEASE"; -- the title (ofc)
+Text = "Please click the Submit button from the codes text."; -- what the text says (ofc)
+Icon = "rbxassetid://57254792"; -- the image if u want. 
+Duration = 5; -- how long the notification should in secounds
+})
+        end)
+ w4:Button(
+    "TargetHUD",
+    function()
+        -- Gui to Lua
+-- Version: 3.2
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local MainFrame = Instance.new("Frame")
+local HPNotactualhpbtwjustalabeltoshowit = Instance.new("TextLabel")
+local SmallHPshowcaseoftheplayer = Instance.new("TextLabel")
+local DistanceNotactualDistancebtwjustalabeltoshowit = Instance.new("TextLabel")
+local ActualDistanceoftheplayernearerthan15studs = Instance.new("TextLabel")
+local RatioIfwinningorloosing = Instance.new("TextLabel")
+local Panel = Instance.new("Frame")
+local Usernameofthetarget = Instance.new("TextLabel")
+local BigHP = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+MainFrame.Name = "MainFrame"
+MainFrame.Parent = ScreenGui
+MainFrame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+MainFrame.BackgroundTransparency = 0.400
+MainFrame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+MainFrame.Position = UDim2.new(0.661, 0,0.472, 0)
+MainFrame.Size = UDim2.new(0, 316, 0, 119)
+
+HPNotactualhpbtwjustalabeltoshowit.Name = "HP [Not actual hp btw, just a label to show it..]"
+HPNotactualhpbtwjustalabeltoshowit.Parent = MainFrame
+HPNotactualhpbtwjustalabeltoshowit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+HPNotactualhpbtwjustalabeltoshowit.BackgroundTransparency = 6.000
+HPNotactualhpbtwjustalabeltoshowit.BorderColor3 = Color3.fromRGB(255, 255, 255)
+HPNotactualhpbtwjustalabeltoshowit.Position = UDim2.new(-0.0696202517, 0, 0.579831958, 0)
+HPNotactualhpbtwjustalabeltoshowit.Size = UDim2.new(0, 81, 0, 50)
+HPNotactualhpbtwjustalabeltoshowit.Font = Enum.Font.SourceSans
+HPNotactualhpbtwjustalabeltoshowit.Text = "HP:"
+HPNotactualhpbtwjustalabeltoshowit.TextColor3 = Color3.fromRGB(255, 255, 255)
+HPNotactualhpbtwjustalabeltoshowit.TextSize = 14.000
+
+SmallHPshowcaseoftheplayer.Name = "Small HP showcase of the player."
+SmallHPshowcaseoftheplayer.Parent = MainFrame
+SmallHPshowcaseoftheplayer.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+SmallHPshowcaseoftheplayer.BackgroundTransparency = 45.000
+SmallHPshowcaseoftheplayer.Position = UDim2.new(-0.189873427, 0, 0.579831958, 0)
+SmallHPshowcaseoftheplayer.Size = UDim2.new(0, 200, 0, 50)
+SmallHPshowcaseoftheplayer.Font = Enum.Font.SourceSans
+SmallHPshowcaseoftheplayer.Text = "100"
+SmallHPshowcaseoftheplayer.TextColor3 = Color3.fromRGB(0, 255, 0)
+SmallHPshowcaseoftheplayer.TextSize = 14.000
+
+DistanceNotactualDistancebtwjustalabeltoshowit.Name = "Distance [Not actual Distance btw, just a label to show it..]"
+DistanceNotactualDistancebtwjustalabeltoshowit.Parent = MainFrame
+DistanceNotactualDistancebtwjustalabeltoshowit.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+DistanceNotactualDistancebtwjustalabeltoshowit.BackgroundTransparency = 54.000
+DistanceNotactualDistancebtwjustalabeltoshowit.Position = UDim2.new(-0.164556965, 0, 0.462184876, 0)
+DistanceNotactualDistancebtwjustalabeltoshowit.Size = UDim2.new(0, 166, 0, 50)
+DistanceNotactualDistancebtwjustalabeltoshowit.Font = Enum.Font.SourceSans
+DistanceNotactualDistancebtwjustalabeltoshowit.Text = "Distance:"
+DistanceNotactualDistancebtwjustalabeltoshowit.TextColor3 = Color3.fromRGB(255, 255, 255)
+DistanceNotactualDistancebtwjustalabeltoshowit.TextSize = 14.000
+
+ActualDistanceoftheplayernearerthan15studs.Name = "Actual Distance of the player, nearer than  15 studs"
+ActualDistanceoftheplayernearerthan15studs.Parent = MainFrame
+ActualDistanceoftheplayernearerthan15studs.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+ActualDistanceoftheplayernearerthan15studs.BackgroundTransparency = 45.000
+ActualDistanceoftheplayernearerthan15studs.Position = UDim2.new(0.120253168, 0, 0.462184876, 0)
+ActualDistanceoftheplayernearerthan15studs.Size = UDim2.new(0, 143, 0, 50)
+ActualDistanceoftheplayernearerthan15studs.Font = Enum.Font.SourceSans
+ActualDistanceoftheplayernearerthan15studs.Text = "Nearer than 800000000 Studs"
+ActualDistanceoftheplayernearerthan15studs.TextColor3 = Color3.fromRGB(0, 85, 255)
+ActualDistanceoftheplayernearerthan15studs.TextSize = 14.000
+
+RatioIfwinningorloosing.Name = "Ratio, If winning, or loosing."
+RatioIfwinningorloosing.Parent = MainFrame
+RatioIfwinningorloosing.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+RatioIfwinningorloosing.BackgroundTransparency = 56.000
+RatioIfwinningorloosing.Position = UDim2.new(-0.0348101482, 0, 0.579831958, 0)
+RatioIfwinningorloosing.Size = UDim2.new(0, 200, 0, 50)
+RatioIfwinningorloosing.Font = Enum.Font.SourceSans
+RatioIfwinningorloosing.Text = "Winning"
+RatioIfwinningorloosing.TextColor3 = Color3.fromRGB(85, 255, 0)
+RatioIfwinningorloosing.TextSize = 25.000
+
+Panel.Name = "Panel"
+Panel.Parent = MainFrame
+Panel.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
+Panel.BorderColor3 = Color3.fromRGB(30, 30, 30)
+Panel.Size = UDim2.new(0, 316, 0, 21)
+Panel.Draggable = true 
+
+Usernameofthetarget.Name = "Username of the target."
+Usernameofthetarget.Parent = Panel
+Usernameofthetarget.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Usernameofthetarget.BackgroundTransparency = 8.000
+Usernameofthetarget.Position = UDim2.new(-0.06, 0,0.571, 0)
+Usernameofthetarget.Size = UDim2.new(0, 200, 0, 50)
+Usernameofthetarget.Font = Enum.Font.SourceSans
+Usernameofthetarget.Text = ""
+Usernameofthetarget.TextColor3 = Color3.fromRGB(255, 255, 255)
+Usernameofthetarget.TextSize = 44.000
+local inf = 800000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+BigHP.Name = "BigHP"
+BigHP.Parent = Panel
+BigHP.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+BigHP.BackgroundTransparency = 48.000
+BigHP.Position = UDim2.new(0.468, 0,0.571, 0)
+BigHP.Size = UDim2.new(0, 200, 0, 50)
+BigHP.Font = Enum.Font.SourceSans
+BigHP.Text = "100"
+BigHP.TextColor3 = Color3.fromRGB(85, 255, 0)
+BigHP.TextSize = 44.000
+BigHP.TextWrapped = true
+
+-- Scripts:
+while true do wait(1)
+local player = game.Players.LocalPlayer
+local studs = 12
+
+
+  
+
+	for __,v in pairs(game.Players:GetPlayers()) do
+		if v ~= player then
+			local distance = (v.Character.PrimaryPart.Position - player.Character.PrimaryPart.Position).Magnitude
+
+			if distance < studs then
+				print(v.Name.." is near you, Health : "..v.Character.Humanoid.Health)
+				
+				SmallHPshowcaseoftheplayer.Text = v.Character.Humanoid.Health
+			
+				BigHP.Text = v.Character.Humanoid.Health
+				Usernameofthetarget.Text = v.Name
+					if game:GetService("Players").LocalPlayer.Character.Humanoid.Health < 50 then
+					RatioIfwinningorloosing.TextColor3 = Color3.fromRGB(255, 170, 0)
+					
+			end
+		
+					if game:GetService("Players").LocalPlayer.Character.Humanoid.Health  < 25 then
+					RatioIfwinningorloosing.TextColor3 = Color3.fromRGB(255, 0, 0)
+					RatioIfwinningorloosing.Text = "Losing!"
+					
+					end
+				end
+			end
+		end
+	end
+
+        end)
         w6:Button(
     "Ghost Config",
     function()
@@ -130,7 +296,52 @@ game:GetService("RunService").RenderStepped:Connect(function()
 end)
 Notification.new("success", "Loaded", "Ghost Config Loaded.") -- Args(<string> Type, <string> Heading, <string> Body, <boolean?> AutoRemoveNotif, <number?> AutoRemoveTime, <function?> OnCloseFunction)
      KillAuraTitle.Visible = true
-   end)
+    end)
+ w1:Button(
+    "Click TP",
+    function()
+        --[[
+Â© 2021 WeAreDevs
+A distribution of https://wearedevs.net/scripts
+Created August 2, 2021
+
+Directions: 
+1. Inject this script into any game using a Lua injector like JJSploit. 
+2. Press left ctrl + click to where you want to teleport
+Re-execute the script to toggle click teleport
+]]
+
+--Makes sure this script is only executed once
+if _G.WRDClickTeleport == nil then
+	_G.WRDClickTeleport = true
+	
+	local player = game:GetService("Players").LocalPlayer
+	local UserInputService = game:GetService("UserInputService")
+	 --Wanted to avoid using mouse instance, but UIS^ is very tedious to get mouse hit position
+	local mouse = player:GetMouse()
+
+	--Waits until the player's mouse is found
+	repeat wait() until mouse
+	
+	UserInputService.InputBegan:Connect(function(input, gameProcessed)
+		if input.UserInputType == Enum.UserInputType.MouseButton1 then
+			--Only click teleport if the toggle is enabled
+			if _G.WRDClickTeleport and UserInputService:IsKeyDown(Enum.KeyCode.LeftControl) then
+				player.Character:MoveTo(Vector3.new(mouse.Hit.x, mouse.Hit.y, mouse.Hit.z)) 
+			end
+		end
+	end)
+--Just toggle instead of re-executing the script
+else
+	_G.WRDClickTeleport = not _G.WRDClickTeleport
+	--Notify
+	if _G.WRDClickTeleport then
+		game.StarterGui:SetCore("SendNotification", {Title="WeAreDevs.net"; Text="Click teleport enabled"; Duration=5;})
+	else
+		game.StarterGui:SetCore("SendNotification", {Title="WeAreDevs.net"; Text="Click teleport disabled"; Duration=5;})
+	end
+end
+        end)
         w1:Button(
     "Speed Modes",
     function()
@@ -1106,6 +1317,50 @@ w1:Button(
     "Fly Modes",
     function()
         local Flys = library:Window("Fly Modes") -- Text
+             Flys:Button(
+    "Infinite Fly",
+    function()
+        game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 80
+        local crtl = false
+
+
+mouse = game.Players.LocalPlayer:GetMouse()
+
+
+local air = Instance.new("Part", workspace)
+air.Size = Vector3.new(7, 2, 3)
+air.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
+air.Transparency = 1
+air.Anchored = true
+air.Name = "Airwalk"
+
+
+mouse.KeyDown:Connect(function(key)
+   if key == "2" then
+       air.Size = Vector3.new(4, -0.5, 3)
+   end
+end)
+
+mouse.KeyUp:Connect(function(key)
+   if key == "2" then
+       air.Size = Vector3.new(7, 2, 3)
+   end
+end)
+
+
+for i = 1, math.huge do
+   air.CFrame = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, -4, 0)
+   wait(0.01)
+end
+
+game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 80
+
+wait(3)
+game:GetService("Players").LocalPlayer.Character.Humanoid.WalkSpeed = 16
+
+
+
+end)
         Flys:Button(
     "Blink Fly",
     function()
