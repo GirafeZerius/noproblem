@@ -1,3 +1,71 @@
+--[[
+
+
+███████╗███████╗██████╗░██╗██╗░░░██╗░██████╗  ░██████╗░░█████╗░███╗░░░███╗███████╗░██████╗
+╚════██║██╔════╝██╔══██╗██║██║░░░██║██╔════╝  ██╔════╝░██╔══██╗████╗░████║██╔════╝██╔════╝
+░░███╔═╝█████╗░░██████╔╝██║██║░░░██║╚█████╗░  ██║░░██╗░███████║██╔████╔██║█████╗░░╚█████╗░
+██╔══╝░░██╔══╝░░██╔══██╗██║██║░░░██║░╚═══██╗  ██║░░╚██╗██╔══██║██║╚██╔╝██║██╔══╝░░░╚═══██╗
+███████╗███████╗██║░░██║██║╚██████╔╝██████╔╝  ╚██████╔╝██║░░██║██║░╚═╝░██║███████╗██████╔╝
+╚══════╝╚══════╝╚═╝░░╚═╝╚═╝░╚═════╝░╚═════╝░  ░╚═════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚══════╝╚═════╝░
+
+]]
+
+if game.PlaceId == 4601704679 then
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/HackerDan69/scripts/main/bakon_itemesp"))()
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
+    
+
+local win = Flux:Window("ZeriusHub", "Arsenal", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local tab = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
+tab:Button("Noclip", "This function alaways works.", function()
+   local Noclip = nil
+local Clip = nil
+
+function noclip()
+	Clip = false
+	local function Nocl()
+		if Clip == false and game.Players.LocalPlayer.Character ~= nil then
+			for _,v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+				if v:IsA('BasePart') and v.CanCollide and v.Name ~= floatName then
+					v.CanCollide = false
+				end
+			end
+		end
+		wait(0.21) -- basic optimization
+	end
+	Noclip = game:GetService('RunService').Stepped:Connect(Nocl)
+end
+
+function clip()
+	if Noclip then Noclip:Disconnect() end
+	Clip = true
+end
+
+noclip() -- to toggle noclip() and clip()
+
+end)
+tab:Button("ESP (Items ect)", "This function alaways works.", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/HackerDan69/scripts/main/bakon_itemesp"))()
+
+end)
+tab:Slider("WalkSpeed", "Makes your character's WalkSpeed lower or higher, to your liking.", 0, 100,16,function(walk)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = walk
+
+end)
+tab:Slider("Gravity", "Makes your character's Gravity higher or lower, to your liking.", 0, 100,16,function(t)
+print(t)
+game.Workspace.Gravity = t
+end)
+tab:Slider("JumpPower", "Makes your character's JumpPower higher or lower, to your liking.", 0, 100,16,function(jump)
+print(t)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = jump
+end)
+tab:Slider("Health", "Makes your character's Health higher or lower, to your liking.", 0, 100,16,function(Health)
+print(t)
+game:GetService("Players").LocalPlayer.Character.Humanoid.Health = Health
+end)
+end
 if game.PlaceId == 3233893879 then
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
     
