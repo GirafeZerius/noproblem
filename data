@@ -1,3 +1,449 @@
+if game.PlaceId == 3233893879 then
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
+    
+
+local win = Flux:Window("ZeriusHub", "Bad Business", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local tab = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
+
+tab:Button("Infinite Ammo", "This function allows you to have infinite ammo.", function()
+    --made by The3Bakers#4565
+--discord link https://discord.gg/vQQqcgBWCG
+if _G.InfAmmo then return else _G.InfAmmo="i am the storm that is aprooooaching provooookin"end--to prevent double execution
+local PlayerTable=getupvalue(require(game.ReplicatedStorage.TS).Characters.GetCharacter,1)--Get Player Table
+local RemoteFolder--some stuff for later
+local RemoteObjects={}--due to duplicates (not needed in this script but can be useful if you want to make your own)
+for _,v in pairs(game.ReplicatedStorage:GetChildren())do
+    if v:IsA("Folder")then
+        for _,c in pairs(v:GetChildren())do
+            if c:IsA("ModuleScript")then
+                for _,x in pairs(c:GetChildren())do
+                    if x:IsA("Folder")then
+                        if x:FindFirstChild("Character")then
+                            RemoteFolder=x
+                            for _,z in pairs(x:GetChildren())do
+                                RemoteObjects[z.Name.."_"..z.ClassName]=z
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
+local IsAlive=function()--detect if client is alive
+    if PlayerTable[game.Players.LocalPlayer]then
+        if PlayerTable[game.Players.LocalPlayer].Parent==game.Workspace.Characters then
+            if PlayerTable[game.Players.LocalPlayer]:FindFirstChild("Root")then
+                return true
+            end
+        end
+    end
+    return false
+end
+game.RunService.RenderStepped:Connect(function()
+    if IsAlive()then--only execute if we are alive
+        RemoteFolder.Item_Paintball:FireServer("Reload",PlayerTable[game.Players.LocalPlayer].Backpack.Equipped.Value)--constantly reload weapon on the server side (technicly will run out if the weapon has slow enough reload speed)
+        PlayerTable[game.Players.LocalPlayer].Backpack.Equipped.Value.State.Ammo.Value=1024--to prevent the client from reloading
+    end
+end)
+end)
+tab:Button("Auto Frag", "This function allows you to Frag but automaticly.", function()
+    --made by The3Bakers#4565
+--discord link https://discord.gg/vQQqcgBWCG
+_G.Frag_Options={
+    Enabled=true,--true,false  set to true to activate the script set to false to disable
+    Auto_Frag=true,--true,false  set to true to enable auto throw set to false to disable auto throw
+    Auto_Frag_Delay=1,--0,10  amount of time before another frag is thrown when auto throw is on
+    Auto_Respawn=false,--true,false  (might be buggy)set to true to auto respawn when you are out of frags set to false to stay alive even with 0 frags
+}
+if _G.FraggerHecfk2023Working then return else _G.FraggerHecfk2023Working=""end--to allow setting changes while in game
+local ClientTeam=""--to detect enemys (used for later)
+local PlayerTable=getupvalue(require(game.ReplicatedStorage.TS).Characters.GetCharacter,1)--main character detection
+local RemoteFolder--to get the remote folder (to fire remote events without manualy clicking buttons)
+local RemoteObjects={}--for multiple instances with same names but diffrent classes
+for _,v in pairs(game.ReplicatedStorage:GetChildren())do--actually get remote folders and remote objects
+    if v:IsA("Folder")then
+        for _,c in pairs(v:GetChildren())do
+            if c:IsA("ModuleScript")then
+                for _,x in pairs(c:GetChildren())do
+                    if x:IsA("Folder")then
+                        if x:FindFirstChild("Character")then
+                            RemoteFolder=x
+                            for _,z in pairs(x:GetChildren())do
+                                RemoteObjects[z.Name.."_"..z.ClassName]=z
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+end
+local GetEnemys=function()--main get enemys function
+    local a={}
+    if ClientTeam=="FFA"then--new ffa game mode O_o
+        for _,v in pairs(game.Players:GetChildren())do--scince we dont need teams we can just get the players directly
+            if v~=game.Players.LocalPlayer then--dont need to target ourself lol
+                if PlayerTable[v]then--if the player is actually a player
+                    if PlayerTable[v].Parent==game.Workspace.Characters then--is the player alive??!?!
+                        if PlayerTable[v]:FindFirstChild("Root")then--is he REALLY alive?
+                            if not PlayerTable[v].Root.ShieldEmitter.Enabled then--detect if we can damage the player (fuck you spawn protection)
+                                a[v]=PlayerTable[v]--add enemy to our list
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    else
+        for _,v in pairs(game.Teams:GetChildren())do--scince we dont want allies in our enemy list we get teams (they do teams diff here)
+            if v.Name~=ClientTeam then--if it isnt our clients team (client team is set later)
+                for _,c in pairs(v.Players:GetChildren())do--dig into player folder
+                    if PlayerTable[c.Value]then--is the player we have a real player
+                        if PlayerTable[c.Value].Parent==game.Workspace.Characters then--is the player alive?
+                            if PlayerTable[c.Value]:FindFirstChild("Root")then--is he REALLY alive?
+                                if not PlayerTable[c.Value].Root.ShieldEmitter.Enabled then--can we damage them?
+                                    a[c.Value]=PlayerTable[c.Value]--add enemy to our list
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return a--we has our enemys now >:)
+end
+local UpdateClientTeam=function()--now we finally set our client teams
+    for _,v in pairs(game.Teams:GetChildren())do--go through team folder (they do teams diff here)
+        for _,c in pairs(v.Players:GetChildren())do--dig into players folder
+            if c.Name==game.Players.LocalPlayer.Name then--is our client in our team?
+                ClientTeam=v.Name--set the client team to the ACTUAL client team
+                return ClientTeam--debug (fuck u)
+            end
+        end
+    end
+end
+local IsAlive=function()--main detection to see if we are alive
+    if PlayerTable[game.Players.LocalPlayer]then--are we real?
+        if PlayerTable[game.Players.LocalPlayer].Parent==game.Workspace.Characters then--are we alive?
+            if PlayerTable[game.Players.LocalPlayer]:FindFirstChild("Root")then--are we not bugged?
+                return true--yes
+            end
+        end
+    end
+    return false--we are dead :(
+end
+local target--target enemy object (used for later)
+game.RunService.RenderStepped:Connect(function()--main target detection/execute code every frame
+    if _G.Frag_Options.Enabled and IsAlive()then--are we going to run frag script and if so are we alive?
+        target=nil--remove latest target (we update this later)
+        UpdateClientTeam()--update client team 
+        local tabl={}--get enemy list which are closest together
+        for _,v in pairs(GetEnemys())do--get our enemys
+            for _,c in pairs(GetEnemys())do--get our enemys again ?!?!?!
+                if v~=c then--detect if the enemy isnt the enemy (fuck you it makes scince)
+                    if not tabl[v]and not tabl[c]then--detect if we havent already gotten this
+                        tabl[v]=c--add close enemys to list
+                    end
+                end
+            end
+        end
+        local mini=math.huge--detect lowest magnitude (distance apart from eachother)
+        for i,v in pairs(tabl)do--go through enemys
+            if mini>(i.Root.Position-v.Root.Position).Magnitude then--if our enemys are closer then other enemys
+                mini=(i.Root.Position-v.Root.Position).Magnitude--if they are closer we have a new closest
+                target=i.Root--our new target (it will get overridden with closer ones)
+            end
+        end
+    end
+end)
+coroutine.wrap(function()--main auto throw
+    while wait()do--wait every less than a second
+        pcall(function()--if we error we dont break our loop
+            if _G.Frag_Options.Auto_Frag and _G.Frag_Options.Enabled and target and IsAlive()then--is the auto throw enabled and main frag tp enabled aswell as if our target exists AND if we are alive
+                local Frag=PlayerTable[game.Players.LocalPlayer].Backpack.Throwable.Value--our throwable item
+                if Frag.State.Ammo.Server.Value~=0 then--do we have throwables left?
+                    local Equipped=PlayerTable[game.Players.LocalPlayer].Backpack.Equipped.Value--our last equipped item
+                    RemoteObjects.Item_RemoteEvent:FireServer("Equip",Frag)--equip our throwabled
+                    RemoteFolder.Item_Throwable:FireServer("Cook",Frag)--hold our throwable ready to throw
+                    RemoteFolder.Item_Throwable:FireServer("Throw",Frag,PlayerTable[game.Players.LocalPlayer].Root.Position,Vector3.new(math.random()*2-1,math.random()*2-1,math.random()*2-1))--throw our frag from our root position at a random direction (direction dosent matter because it will be teleported)
+                    RemoteObjects.Item_RemoteEvent:FireServer("Equip",Equipped)--equip our previous weapon
+                    wait(_G.Frag_Options.Auto_Frag_Delay)--wait our delay amount that YOU set
+                elseif _G.Frag_Options.Auto_Respawn then--if were out of ammo and we have auto respawn on
+                    repeat RemoteFolder.Character:FireServer("Reset")wait()until not IsAlive()--spawn reset until we go to menu
+                    RemoteFolder.Character:FireServer("Deploy")--deploy once we are in the menu
+                end
+            end
+        end)
+    end
+end)()
+game.Workspace.Throwables.ChildAdded:Connect(function(x)--main teleport frag
+    if _G.Frag_Options.Enabled then--is the teleport frag enabled?
+        local PrimaryBody=x:WaitForChild("Body"):WaitForChild("BodyPrimary")--get our main body of the grenade (we cannot move the grenade with just any part)
+        repeat
+            PrimaryBody.CFrame=CFrame.new()--we move our part to a location that wont kill us until we find a targer
+            game.RunService.RenderStepped:Wait()--every frame
+        until x==nil or not x:IsDescendantOf(game.Workspace) or target--until the frag exploded or we find a target
+        repeat
+            PrimaryBody.CFrame=target.CFrame--we move our part to the target
+            game.RunService.RenderStepped:Wait()--every frame
+        until x==nil or not x:IsDescendantOf(game.Workspace)--until the frag exploded
+    end
+end)
+    end)
+tab:Button("Aimbot", "im not explaining this 💀", function()
+    --made by The3Bakers#4565
+--discord link https://discord.gg/vQQqcgBWCG
+_G.Aimbot_Settings={
+    Enabled=true,--true,false  set to true to enable aimbot set to false to disable
+    Silent=false,--true,false  set to true to enable silent aim mode, set to false to disable silent aim
+    Target="Head",--All,Ends,LeftHand,Abdomen,RightLeg,Hips,RightFoot,LeftArm,LeftForearm,RightForearm,RightForeleg,RightHand,Chest,RightArm,Neck,Head,LeftForeleg,LeftLeg,LeftFoot
+    Auto_Shoot=false,--true,false  set to true to automaticly shoot enemys when you aim,set to false to disable
+    Auto_Aim=false,--true,false  set to true to automaticly aim and target players,set to false to disable
+    Aim_Out_Delay=.25,--0-inf  amount of time before it unaims if auto aim is on
+    Fov=50,--0-inf  aimbot circle size
+    Show_Fov=true,--true,false  set to true to make circle visible, set to false to disable
+    Fov_Color=Color3.fromRGB(255,0,0),--circle color
+    Ignore_Fov=false,--true,false  set to true to disable fov circle check,set to false to enable fov circle check
+    Ignore_Walls=false,--true,false  set to true to enable wallbang set to false to disable
+}
+
+
+
+if _G.Aimbot_Settings.Ignore_Walls then--wallbang without loop O_o
+    debug.setupvalue(require(game.ReplicatedStorage.TS).Raycast.CastGeometryAndEnemies,1,nil)--remove geometry from list
+    debug.setupvalue(require(game.ReplicatedStorage.TS).Raycast.CastGeometryAndEnemies,2,nil)--remove terrain from list
+else
+    debug.setupvalue(require(game.ReplicatedStorage.TS).Raycast.CastGeometryAndEnemies,1,game.Workspace.Geometry)--add geomtry to list
+    debug.setupvalue(require(game.ReplicatedStorage.TS).Raycast.CastGeometryAndEnemies,2,game.Workspace.Terrain)--add terrain to list
+end
+_G.Targets={}--targeting system
+if _G.Aimbot_Settings.Target=="All"then--if we target all then add everypart to list
+    _G.Targets={"LeftHand","Abdomen","RightLeg","Hips","RightFoot","LeftArm","LeftForearm","RightForearm","RightForeleg","RightHand","Chest","RightArm","Neck","Head","LeftForeleg","LeftLeg","LeftFoot"}
+elseif _G.Aimbot_Settings.Target=="Ends"then--if edges then we add every end to list
+    _G.Targets={"LeftHand","RightFoot","RightHand","Head","LeftFoot"}
+else--or we add itself
+    _G.Targets={_G.Aimbot_Settings.Target}
+end
+if _G.AimHack then return else _G.AimHack="Shoote Merthod fOR bAd Business!??!?!"end--we allow the prevoiuse code to be rexxecuted because it needs to be to update settings
+local ClientTeam=""--use for later ;)
+local PlayerTable=getupvalue(require(game.ReplicatedStorage.TS).Characters.GetCharacter,1)--player table
+local NotIgnore={game.Workspace.Geometry}--some shit i used awhile ago
+local GetEnemys=function()--get enemys function
+    local a={}
+    if ClientTeam=="FFA"then--new ffa game mode 0_o
+        for _,v in pairs(game.Players:GetChildren())do
+            if v~=game.Players.LocalPlayer then
+                if PlayerTable[v]then
+                    if PlayerTable[v].Parent==game.Workspace.Characters then
+                        if PlayerTable[v]:FindFirstChild("Root")then
+                            if not PlayerTable[v].Root.ShieldEmitter.Enabled then
+                                a[v]=PlayerTable[v]
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    else--no ffa sad
+        for _,v in pairs(game.Teams:GetChildren())do
+            if v.Name~=ClientTeam then
+                for _,c in pairs(v.Players:GetChildren())do
+                    if PlayerTable[c.Value]then
+                        if PlayerTable[c.Value].Parent==game.Workspace.Characters then
+                            if PlayerTable[c.Value]:FindFirstChild("Root")then
+                                if not PlayerTable[c.Value].Root.ShieldEmitter.Enabled then
+                                    a[c.Value]=PlayerTable[c.Value]
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+    end
+    return a
+end
+local IsAlive=function()--detect if client is alive
+    if PlayerTable[game.Players.LocalPlayer]then
+        if PlayerTable[game.Players.LocalPlayer].Parent==game.Workspace.Characters then
+            if PlayerTable[game.Players.LocalPlayer]:FindFirstChild("Root")then
+                return true
+            end
+        end
+    end
+    return false
+end
+local IsPartOfDescendant=function(part,ancestor)--fuck u roblox you should already have this fucking stoopid rewtard
+    if part==ancestor then return true end
+    repeat part=part.Parent until part==ancestor or not part
+    return part==ancestor
+end
+local GetNotTerrain=function()--fuck you whitelist
+    local a={}
+    for _,v in pairs(game.Workspace:GetChildren())do
+        if v~=game.Workspace.Terrain then
+            a[#a+1]=v
+        end
+    end
+    return a
+end
+local CanHit=function(position,ignore,notignore,terrainhit)--can we SEE THE ENEMYS?!?!?!?!
+    terrainhit=terrainhit or false
+    ignore=ignore or{}
+    notignore=notignore or{}
+    if typeof(position)=="Instance"then
+        position=position.Position
+    end
+    for _,v in pairs(game.Workspace.CurrentCamera:GetPartsObscuringTarget({position},ignore))do
+        for _,c in pairs(notignore)do
+            if IsPartOfDescendant(v,c)then
+                return false
+            end
+        end
+    end
+    if terrainhit then--pro gamer hacks :)
+        local start=game.Workspace.CurrentCamera.CFrame.Position
+        local ray=Ray.new(start,position-start)
+        local hitterrain=game.Workspace:FindPartOnRayWithIgnoreList(ray,GetNotTerrain())
+        if hitterrain then
+            return false
+        end
+    end
+    return true
+end
+local UpdateClientTeam=function()--am shitty at getting teams
+    for _,v in pairs(game.Teams:GetChildren())do
+        for _,c in pairs(v.Players:GetChildren())do
+            if c.Name==game.Players.LocalPlayer.Name then
+                ClientTeam=v.Name
+                return ClientTeam
+            end
+        end
+    end
+end
+local GetHB=function(hitboxes,toget)--hitboxes > bones
+    for _,v in pairs(hitboxes:GetChildren())do
+        if v.WeldConstraint.Part0.Name==toget then
+            return v
+        end
+    end
+    return false
+end
+local Rmb=false--is we enabled?
+local shift=false--are we sprinting?
+game.Players.LocalPlayer:GetMouse().Button2Down:Connect(function()
+    Rmb=true
+end)
+game.Players.LocalPlayer:GetMouse().Button2Up:Connect(function()
+    Rmb=false
+end)
+game.UserInputService.InputBegan:Connect(function(x)
+    if x.KeyCode==Enum.KeyCode.LeftShift then
+        shift=true
+    end
+end)
+game.UserInputService.InputEnded:Connect(function(x)
+    if x.KeyCode==Enum.KeyCode.LeftShift then
+        shift=false
+    end
+end)
+local target--fuck you its simple
+game.RunService.RenderStepped:Connect(function()
+    target=nil
+    if _G.Aimbot_Settings.Enabled and IsAlive()then
+        UpdateClientTeam()
+        local a=math.huge
+        for _,v in pairs(GetEnemys())do
+            for _,c in pairs(_G.Targets)do
+                local main=GetHB(v.Hitbox,c)
+                if _G.Aimbot_Settings.Ignore_Fov then
+                    if(main.Position-PlayerTable[game.Players.LocalPlayer].Root.Position).Magnitude<a and(CanHit(main.Position,{},NotIgnore,true)or _G.Aimbot_Settings.Ignore_Walls)then
+                        target=main
+                        a=(main.Position-PlayerTable[game.Players.LocalPlayer].Root.Position).Magnitude
+                    end
+                else
+                    local center=game.Workspace.CurrentCamera:WorldToViewportPoint(game.Workspace.CurrentCamera.CFrame.Position+game.Workspace.CurrentCamera.CFrame.LookVector)
+                    local partloc=game.Workspace.CurrentCamera:WorldToScreenPoint(main.Position)
+                    if(Vector2.new(partloc.X,partloc.Y)-Vector2.new(center.X,center.Y)).Magnitude<=_G.Aimbot_Settings.Fov then
+                        if(main.Position-PlayerTable[game.Players.LocalPlayer].Root.Position).Magnitude<a and(CanHit(main.Position,{},NotIgnore,true)or _G.Aimbot_Settings.Ignore_Walls)then
+                            target=main
+                            a=(main.Position-PlayerTable[game.Players.LocalPlayer].Root.Position).Magnitude
+                        end
+                    end
+                end
+            end
+        end
+        local oldcf=game.Workspace.CurrentCamera.CFrame--silent aim hack 2021/1?1
+        if _G.Aimbot_Settings.Silent and target then
+            game.Workspace.CurrentCamera.CFrame=CFrame.new(game.Workspace.CurrentCamera.CFrame.Position,target.Position)
+        end
+        if target and(Rmb or _G.Aimbot_Settings.Auto_Aim)and _G.Aimbot_Settings.Auto_Shoot and game.Workspace.CurrentCamera.CFrame==CFrame.new(game.Workspace.CurrentCamera.CFrame.Position,target.Position)then
+            if _G.Aimbot_Settings.Auto_Aim then
+                require(game.ReplicatedStorage.TS).Input:AutomateBegan("Aim")--my epic aim input hack
+            end
+            require(game.ReplicatedStorage.TS).Input:AutomateBegan("Shoot")--new shoot method no mouse1press?!?!?!?!
+            require(game.ReplicatedStorage.TS).Input:AutomateEnded("Shoot")
+        end
+        if _G.Aimbot_Settings.Silent then
+            game.Workspace.CurrentCamera.CFrame=oldcf
+        end
+    end
+end)
+coroutine.wrap(function()
+    while game.RunService.RenderStepped:Wait()do
+        pcall(function()
+            if _G.Aimbot_Settings.Enabled and target and _G.Aimbot_Settings.Auto_Aim and IsAlive()then
+                repeat game.RunService.RenderStepped:Wait()
+                until not target or not _G.Aimbot_Settings.Enabled or not _G.Aimbot_Settings.Auto_Aim
+                if _G.Aimbot_Settings.Aim_Out_Delay~=0 then
+                    wait(_G.Aimbot_Settings.Aim_Out_Delay)
+                end
+                if(not target or not _G.Aimbot_Settings.Enabled or not _G.Aimbot_Settings.Auto_Aim)and not Rmb then
+                    require(game.ReplicatedStorage.TS).Input:AutomateEnded("Aim")
+                end
+                if(not target or not _G.Aimbot_Settings.Enabled or not _G.Aimbot_Settings.Auto_Aim)and shift then
+                    require(game.ReplicatedStorage.TS).Input:AutomateBegan("Sprint")--resprint if we are sprinting
+                end
+            end
+        end)
+    end
+end)()
+coroutine.wrap(function()
+    while wait(1)do
+        pcall(function()--epic fov circle
+            if _G.Aimbot_Settings.Enabled and _G.Aimbot_Settings.Show_Fov and not _G.Aimbot_Settings.Ignore_Fov then
+                local center=game.Workspace.CurrentCamera:WorldToViewportPoint(game.Workspace.CurrentCamera.CFrame.Position+game.Workspace.CurrentCamera.CFrame.LookVector)
+                local a=Drawing.new("Circle")
+                a.Visible=true
+                a.Position=Vector2.new(center.X,center.Y)
+                a.Color=_G.Aimbot_Settings.Fov_Color
+                a.Thickness=2.5
+                a.Transparency=1
+                a.NumSides=100
+                a.Radius=_G.Aimbot_Settings.Fov
+                coroutine.wrap(function()
+                    wait(1.1)
+                    a:Remove()
+                end)()
+            end
+        end)
+    end
+end)()
+local mt=getrawmetatable(game)
+local oldnewIndex=mt.__newindex
+setreadonly(mt,false)
+mt.__newindex=newcclosure(function(obj,prop,newprop)
+    if not _G.Aimbot_Settings.Silent and target and _G.Aimbot_Settings.Enabled and(Rmb or _G.Aimbot_Settings.Auto_Aim)and tostring(obj)=="Camera"and prop=="CFrame"then
+        newprop=CFrame.new(newprop.Position,target.Position)--arms get stuck behind if we use regular renderstep
+    end
+    return oldnewIndex(obj,prop,newprop)
+    end)
+  end)
+
+end
+
 if game.PlaceId == 373513488
 then
    
