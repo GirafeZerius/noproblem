@@ -16,7 +16,7 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/HackerDan69/scripts/m
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
     
 
-local win = Flux:Window("ZeriusHub", "Arsenal", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local win = Flux:Window("ZeriusHub", "BAKON", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
 local tab = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
 tab:Button("Noclip", "This function alaways works.", function()
    local Noclip = nil
