@@ -126,9 +126,7 @@ tab:Button("Left to Rot Badge", "This function teleports to a certain area.", fu
 -- tab:Label("This is just a label.")
 -- 273, -29, -2750
 end)
-else 
-    print("invalid game")
-end
+
 
   
 if game.PlaceId == 3587619225 then
