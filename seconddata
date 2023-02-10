@@ -114,3 +114,4 @@ tab:Button("Left to Rot Badge", "This function teleports to a certain area.", fu
 -- tab:Label("This is just a label.")
 -- 273, -29, -2750
 end)
+end
