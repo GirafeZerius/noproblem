@@ -9,6 +9,128 @@
 ╚══════╝╚══════╝╚═╝░░╚═╝╚═╝░╚═════╝░╚═════╝░  ░╚═════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚══════╝╚═════╝░
 
 ]]
+
+if game.PlaceId == 1203277322 then
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
+    
+
+local win = Flux:Window("ZeriusHub", "Fredbear and Friends 5", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local tab = win:Tab("Teleports", "http://www.roblox.com/asset/?id=6023426915")
+local tab1 = win:Tab("Claim Badges", "http://www.roblox.com/asset/?id=6023426915")
+local tab2 = win:Tab("Movement", "http://www.roblox.com/asset/?id=6023426915")
+local tab3 = win:Tab("Trolling ", "http://www.roblox.com/asset/?id=6023426915")
+tab:Button("Hub", "This function teleports to a certain area.", function()
+ -- -108, -11, -2600
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(237, -28, -2816)
+
+end)
+-- (They can only see animations)
+tab3:Label("(They can only see animations, expect Gale fighter.)")
+tab3:Button("Server Admin", "", function()
+ -- -108, -11, -2600
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ONEReverseCard/My-Scripts/main/Netless%20Server%20Admin.md"))()
+
+end)
+tab3:Button("Gale Fighter", "", function()
+ -- -108, -11, -2600
+loadstring(game:HttpGet("https://raw.githubusercontent.com/sinret/rbxscript.com-scripts-reuploads-/main/gale", true))()
+
+end)
+tab3:Button("ESP", "", function()
+ -- -108, -11, -2600
+loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/WRD%20ESP.txt"))()
+
+end)
+tab2:Slider("Gravity", "Makes your character's Gravity higher or lower, to your liking.", 0, 100,16,function(t)
+print(t)
+game.Workspace.Gravity = t
+end)
+tab2:Slider("JumpPower", "Makes your character's JumpPower higher or lower, to your liking.", 0, 100,16,function(jump)
+print(t)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = jump
+end)
+
+tab2:Slider("Health", "Makes your character's Health higher or lower, to your liking.", 0, 100,16,function(Health)
+print(t)
+game:GetService("Players").LocalPlayer.Character.Humanoid.Health = Health
+end)
+tab1:Button("Endo Badge Claim", "This function teleports to a certain area.", function()
+ -- -108, -11, -2600
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(81, 6, 211)
+
+end)
+tab1:Button("Into the pit Badge Claim", "This function teleports to a certain area.", function()
+ -- -108, -11, -2600
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-112, 6, 152)
+end)
+tab1:Button("Left to rot Claim", "This function teleports to a certain area.", function()
+ -- -108, -11, -2600
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-311, 5, -161)
+end)
+-- -311, 5, -161
+tab:Button("Gamepass area", "This function teleports to a certain area.", function()
+ -- -108, -11, -2600
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(236, -29, -2765)
+
+end)
+tab:Button("Badge Area", "This function teleports to a certain area.", function()
+ -- -108, -11, -2600
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(271, -29, -2763)
+
+end)
+-- badge area 271, -29, -2763
+tab:Button("Mystery Character Gamepass", "This function teleports to a certain area.", function()
+ -- -108, -11, -2600
+ game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-108, -11, -2600)
+
+end)
+tab:Button("Bear of The Past Gamepass", "This function teleports to a certain area.", function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-180, -6, -2730)
+-- -180, -6, -2730
+end)
+tab:Button("Dayshift At Freddy's Gamepass", "This function teleports to a certain area.", function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-104, -11, -2451)
+-- -180, -6, -2730
+end)
+-- Monster of the past: 23, -10, -2984
+tab:Button("Monster of the past Gamepass", "This function teleports to a certain area.", function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(23, -10, -2984)
+-- -180, -6, -2730
+end)
+tab:Button("FNAF 1 Gamepass", "This function teleports to a certain area.", function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(119, -10, -2972)
+ 
+-- -180, -6, -2730
+end)
+-- 273, -29, -2751
+tab:Label("Badges")
+tab:Button("Endo Badge", "This function teleports to a certain area.", function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(273, -29, -2750)
+ 
+-- -180, -6, -2730
+-- tab:Label("This is just a label.")
+-- 273, -29, -2750
+end)
+-- 291, -29, -2751
+tab:Button("Into the pit Badge", "This function teleports to a certain area.", function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(291, -29, -2751)
+ 
+-- -180, -6, -2730
+-- tab:Label("This is just a label.")
+-- 273, -29, -2750
+end)
+tab:Button("Left to Rot Badge", "This function teleports to a certain area.", function()
+  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(305, -29, -2763)
+ 
+-- -180, -6, -2730
+-- tab:Label("This is just a label.")
+-- 273, -29, -2750
+end)
+else 
+    print("invalid game")
+end
+
+  
 if game.PlaceId == 3587619225 then
 
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
