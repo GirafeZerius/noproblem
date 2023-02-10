@@ -11,7 +11,7 @@
 ]]
 
 
-
+loadstring(game:HttpGet('https://raw.githubusercontent.com/GirafeZerius/noproblem/main/seconddata'))()
 
   
 if game.PlaceId == 3587619225 then
