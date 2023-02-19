@@ -9,7 +9,96 @@
 ╚══════╝╚══════╝╚═╝░░╚═╝╚═╝░╚═════╝░╚═════╝░  ░╚═════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚══════╝╚═════╝░
 
 ]]
+if game.PlaceId == 7232779505 then
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
 
+local win = Flux:Window("ZeriusHub", "Type Race", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local tab = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
+tab:Label("Only Execute once per game.")
+tab:Button("AutoPlay", "Auto Play's for you.", function()
+getgenv().TypeSettings={
+["MaxWait"]=10,
+["MinWait"]=1,
+-- math.random(MinWait,MaxWait)/100 is the wait method
+}
+
+local keys={
+["a"]=0x41,
+["b"]=0x42,
+["c"]=0x43,
+["d"]=0x44,
+["e"]=0x45,
+["f"]=0x46,
+["g"]=0x47,
+["h"]=0x48,
+["i"]=0x49,
+["j"]=0x4A,
+["k"]=0x4B,
+["l"]=0x4C,
+["m"]=0x4D,
+["n"]=0x4E,
+["o"]=0x4F,
+["p"]=0x50,
+["q"]=0x51,
+["r"]=0x52,
+["s"]=0x53,
+["t"]=0x54,
+["u"]=0x55,
+["v"]=0x56,
+["w"]=0x57,
+["x"]=0x58,
+["y"]=0x59,
+["z"]=0x5A,
+
+--Special Chars
+[" "]=0x20,
+}
+
+
+local loplr =game:GetService("Players").LocalPlayer
+local typSet =getgenv().TypeSettings
+
+local function press(text)
+task.wait()
+local key=keys[string.lower(text)]
+keypress(key)
+
+task.wait( math.random(typSet["MinWait"],typSet["MaxWait"])/100 )
+
+keyrelease(key)
+end
+
+local function findLetterTable()
+for i,obj in pairs( getgc() ) do
+if type(obj) == "function" and getfenv(obj).script == game:GetService("Players").LocalPlayer.PlayerGui.LocalMain then
+local consts=debug.getconstants(obj)
+
+if consts[8]=="idXTO3JVlV0CBTmiSbaQ" then
+--local tab=debug.getupvalue(obj,4)
+return debug.getupvalue(obj,4)
+end
+end
+end
+end
+
+
+local letters=findLetterTable()
+
+repeat
+task.wait()
+until isrbxactive()==true
+
+for i,v in pairs( letters ) do
+--Shitty Wait
+repeat
+task.wait()
+until isrbxactive()==true
+
+press(v)
+end
+--
+end)
+end
 if game.PlaceId == 1240123653 then
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
     
