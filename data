@@ -9,120 +9,6 @@
 ╚══════╝╚══════╝╚═╝░░╚═╝╚═╝░╚═════╝░╚═════╝░  ░╚═════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚══════╝╚═════╝░
 
 ]]
-
-if game.PlaceId == 8908228901 then
-local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
-
-local win = Flux:Window("ZeriusHub", "SharkBite 2", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
-local tab = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
-local tab1 = win:Tab("Visuals", "http://www.roblox.com/asset/?id=6023426915")
-local tab2 = win:Tab("Movement", "http://www.roblox.com/asset/?id=6023426915")
-tab:Label("Only use oneshot shark with your gun equipped.")
-tab:Button("Auto Farm", "AutoFarms for you.", function()
-    getgenv().StartCollectGifts = true -- Toggle for farming
-loadstring(game:HttpGet("https://raw.githubusercontent.com/KrystekYTpv/Scripts/main/SharkBite2_PresentAutoFarm.lua", true))()
-end)
-tab1:Button("ESP", "See Players trough walls.", function()
-    loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/WRD%20ESP.txt"))()
-    end)
-tab:Button("OneShot Shark", "Execute this after holding your gun..", function()
-local data = require(game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts"):WaitForChild("ProjectilesClient"):WaitForChild("WeaponScript"):WaitForChild("HitScanFire"))
-local remote = getupvalue(getupvalue(getupvalue(data.Fire,8),4),2)
-
-local function WaitForChildWhichIsA(instance, classtype)
-   local target = instance:FindFirstChildWhichIsA(classtype)
-   while not target or not target:IsA(classtype) do
-       target = instance.ChildAdded:Wait()
-   end
-   return target
-end
-
-while task.wait() do
-   remote:FireServer(WaitForChildWhichIsA(workspace:WaitForChild("Sharks"),"Model"))
-end
-end)
-
-tab1:Button("Shark Esp", "Allows you to see the shark.", function()
-for _,v in pairs(game.workspace.Sharks:GetChildren()) do
-   local Highlight = Instance.new("Highlight")
-   Highlight.FillColor = Color3.fromRGB(134, 242, 0)
-   Highlight.Parent = v
-   Highlight.OutlineTransparency = 0.3
-   Highlight.FillTransparency = 0.2
-end
-
-local function OnAdded(Shark)
-    repeat task.wait() until Shark:IsA("Model")
-   local Highlight = Instance.new("Highlight")
-   Highlight.FillColor = Color3.fromRGB(134, 242, 0)
-   Highlight.Parent = Shark
-   Highlight.OutlineTransparency = 0.3
-   Highlight.FillTransparency = 0.2
-  
-end
-
-game:GetService("Workspace").Sharks.ChildAdded:Connect(function(Shark)
-   OnAdded(Shark)
-end)
-end)
-tab:Button("Rifle Mods", "Allows you to have Rifle Modifications.", function()
-if not funcs then
-loadstring(game:HttpGet("https://raw.githubusercontent.com/6yNuiC9/scr/main/funcs.lua"))()
-end
-local old=syn.get_thread_identity()
-syn.set_thread_identity(3)
-local rifle=require(game:GetService("ReplicatedStorage").Projectiles.ProjectileStatsModule).get().Rifle
---retarded code^
-syn.set_thread_identity(old)
-old=nil
-rifle.FireRate=9e9
-rifle.MagSize=9e9
-rifle.Damage=9e9
-rifle.Range=9e9
-rifle.Mode=2
-rifle.ReloadTime=0
-rifle.Recoil=Vector3.new(0,0,0)
-local function sharkfunc(x)
-task.wait(.5)
-funcs.addhook(x,{['color']=Color3.fromRGB(100,0,0);['transp']=.4})
-end
-workspace.Sharks.ChildAdded:Connect(sharkfunc)
-for i,v in pairs(workspace.Sharks:GetChildren()) do
-task.spawn(sharkfunc,v)
-end
-local function chh(ch)
-if ch=='InMouth' then
-getchar():SetAttribute('InMouth',nil)
-end
-end
-getchar().AttributeChanged:Connect(chh)
-funcs.lplr.CharacterAdded:Connect(function(ch) ch.AttributeChanged:Connect(chh) end)
-end)
-
-tab2:Slider("WalkSpeed", "Makes your character's WalkSpeed lower or higher, to your liking.", 0, 100,16,function(walk)
-game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = walk
-
-end)
-tab2:Slider("Gravity", "Makes your character's Gravity higher or lower, to your liking.", 0, 100,16,function(t)
-print(t)
-game.Workspace.Gravity = t
-end)
-tab2:Slider("JumpPower", "Makes your character's JumpPower higher or lower, to your liking.", 0, 100,16,function(jump)
-print(t)
-game.Players.LocalPlayer.Character.Humanoid.JumpPower = jump
-end)
-tab2:Slider("Health", "Makes your character's Health higher or lower, to your liking.", 0, 100,16,function(Health)
-print(t)
-game:GetService("Players").LocalPlayer.Character.Humanoid.Health = Health
-end)
-end
-if game.PlaceId == 734159876 then
-    local notis = loadstring(game:HttpGet("https://pastebin.com/raw/Gpxq9YKK"))()
-
--- notis:Notify(string title, string message, int duration, Color3.fromRGB(barColor))
-
-notis:Notify("Wrong!", "You are on the wrong Sharkbite game if you wanted to use zerius there.", 5, Color3.fromRGB(255, 255, 255))
-    end
 if game.PlaceId == 1240123653 then
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
     
@@ -243,6 +129,120 @@ Duration = 5; -- how long the notification should in secounds
 })
 end)
 end
+if game.PlaceId == 8908228901 then
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
+
+local win = Flux:Window("ZeriusHub", "SharkBite 2", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local tab = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
+local tab1 = win:Tab("Visuals", "http://www.roblox.com/asset/?id=6023426915")
+local tab2 = win:Tab("Movement", "http://www.roblox.com/asset/?id=6023426915")
+tab:Label("Only use oneshot shark with your gun equipped.")
+tab:Button("Auto Farm", "AutoFarms for you.", function()
+    getgenv().StartCollectGifts = true -- Toggle for farming
+loadstring(game:HttpGet("https://raw.githubusercontent.com/KrystekYTpv/Scripts/main/SharkBite2_PresentAutoFarm.lua", true))()
+end)
+tab1:Button("ESP", "See Players trough walls.", function()
+    loadstring(game:HttpGet("https://cdn.wearedevs.net/scripts/WRD%20ESP.txt"))()
+    end)
+tab:Button("OneShot Shark", "Execute this after holding your gun..", function()
+local data = require(game:GetService("Players").LocalPlayer:WaitForChild("PlayerScripts"):WaitForChild("ProjectilesClient"):WaitForChild("WeaponScript"):WaitForChild("HitScanFire"))
+local remote = getupvalue(getupvalue(getupvalue(data.Fire,8),4),2)
+
+local function WaitForChildWhichIsA(instance, classtype)
+   local target = instance:FindFirstChildWhichIsA(classtype)
+   while not target or not target:IsA(classtype) do
+       target = instance.ChildAdded:Wait()
+   end
+   return target
+end
+
+while task.wait() do
+   remote:FireServer(WaitForChildWhichIsA(workspace:WaitForChild("Sharks"),"Model"))
+end
+end)
+
+tab1:Button("Shark Esp", "Allows you to see the shark.", function()
+for _,v in pairs(game.workspace.Sharks:GetChildren()) do
+   local Highlight = Instance.new("Highlight")
+   Highlight.FillColor = Color3.fromRGB(134, 242, 0)
+   Highlight.Parent = v
+   Highlight.OutlineTransparency = 0.3
+   Highlight.FillTransparency = 0.2
+end
+
+local function OnAdded(Shark)
+    repeat task.wait() until Shark:IsA("Model")
+   local Highlight = Instance.new("Highlight")
+   Highlight.FillColor = Color3.fromRGB(134, 242, 0)
+   Highlight.Parent = Shark
+   Highlight.OutlineTransparency = 0.3
+   Highlight.FillTransparency = 0.2
+  
+end
+
+game:GetService("Workspace").Sharks.ChildAdded:Connect(function(Shark)
+   OnAdded(Shark)
+end)
+end)
+tab:Button("Rifle Mods", "Allows you to have Rifle Modifications.", function()
+if not funcs then
+loadstring(game:HttpGet("https://raw.githubusercontent.com/6yNuiC9/scr/main/funcs.lua"))()
+end
+local old=syn.get_thread_identity()
+syn.set_thread_identity(3)
+local rifle=require(game:GetService("ReplicatedStorage").Projectiles.ProjectileStatsModule).get().Rifle
+--retarded code^
+syn.set_thread_identity(old)
+old=nil
+rifle.FireRate=9e9
+rifle.MagSize=9e9
+rifle.Damage=9e9
+rifle.Range=9e9
+rifle.Mode=2
+rifle.ReloadTime=0
+rifle.Recoil=Vector3.new(0,0,0)
+local function sharkfunc(x)
+task.wait(.5)
+funcs.addhook(x,{['color']=Color3.fromRGB(100,0,0);['transp']=.4})
+end
+workspace.Sharks.ChildAdded:Connect(sharkfunc)
+for i,v in pairs(workspace.Sharks:GetChildren()) do
+task.spawn(sharkfunc,v)
+end
+local function chh(ch)
+if ch=='InMouth' then
+getchar():SetAttribute('InMouth',nil)
+end
+end
+getchar().AttributeChanged:Connect(chh)
+funcs.lplr.CharacterAdded:Connect(function(ch) ch.AttributeChanged:Connect(chh) end)
+end)
+
+tab2:Slider("WalkSpeed", "Makes your character's WalkSpeed lower or higher, to your liking.", 0, 100,16,function(walk)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = walk
+
+end)
+tab2:Slider("Gravity", "Makes your character's Gravity higher or lower, to your liking.", 0, 100,16,function(t)
+print(t)
+game.Workspace.Gravity = t
+end)
+tab2:Slider("JumpPower", "Makes your character's JumpPower higher or lower, to your liking.", 0, 100,16,function(jump)
+print(t)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = jump
+end)
+tab2:Slider("Health", "Makes your character's Health higher or lower, to your liking.", 0, 100,16,function(Health)
+print(t)
+game:GetService("Players").LocalPlayer.Character.Humanoid.Health = Health
+end)
+end
+if game.PlaceId == 734159876 then
+    local notis = loadstring(game:HttpGet("https://pastebin.com/raw/Gpxq9YKK"))()
+
+-- notis:Notify(string title, string message, int duration, Color3.fromRGB(barColor))
+
+notis:Notify("Wrong!", "You are on the wrong Sharkbite game if you wanted to use zerius there.", 5, Color3.fromRGB(255, 255, 255))
+    end
+
 if game.PlaceId == 2768379856 then
 
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
