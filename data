@@ -123,7 +123,7 @@ if game.PlaceId == 734159876 then
 
 notis:Notify("Wrong!", "You are on the wrong Sharkbite game if you wanted to use zerius there.", 5, Color3.fromRGB(255, 255, 255))
     end
-if game.PlaceId == 1240123653 or 1632210982 then
+if game.PlaceId == 1240123653 then
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
     
 
