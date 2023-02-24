@@ -9,6 +9,93 @@
 ╚══════╝╚══════╝╚═╝░░╚═╝╚═╝░╚═════╝░╚═════╝░  ░╚═════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚══════╝╚═════╝░
 
 ]]
+
+if game.PlaceId == 8657766101 then
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
+    
+
+local win = Flux:Window("ZeriusHub", "Marvellous Playground", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local tab = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
+
+tab:Label("More is gonna be added here!")
+tab:Button("God Mode", "This function allows you to be close to invincible.", function()
+while true do wait(0.70)
+
+local args = {
+    [1] = game:GetService("Players").LocalPlayer
+}
+
+game:GetService("ReplicatedStorage").Characters.Combat.Remotes.Blocking:FireServer(unpack(args))
+end
+end)
+end
+if game.PlaceId ==  281565904 then
+
+local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
+    
+
+local win = Flux:Window("ZeriusHub", "Classic Freddy Fazblox's Pizza Roleplay", Color3.fromRGB(255, 110, 48), Enum.KeyCode.LeftControl)
+local tab = win:Tab("Main", "http://www.roblox.com/asset/?id=6023426915")
+
+
+
+Flux:Notification("I made this game due to nostalgia", "Alright")
+
+tab:Textbox("Change Tickets Values", "This textbox changes Tickets values.", true, function(t)
+print(t)
+local pl = game.Players.LocalPlayer.PlayerData
+--local tokens
+
+pl.Tickets.Value = t
+end)
+
+tab:Textbox("Change Token Values", "This textbox changes Tokens values.", true, function(ta)
+print(t)
+local pl = game.Players.LocalPlayer.PlayerData
+--local tokens
+pl.Tokens.Value = ta
+
+end)
+
+
+tab:Button("Unlock All", "This function may not work sometimes and you can get banned.", function()
+    local pl = game.Players.LocalPlayer.PlayerData
+
+pl.FoxyPurchased.Skin1.Value = true
+pl.FoxyPurchased.Value = true
+pl.FreddyPurchased.Value = true
+pl.FreddyPurchased.Skin1.Value = true
+pl.FreddyPurchased.Skin2.Value = true
+--bonnie
+pl.BonniePurchased.Value = true
+pl.BonniePurchased.Skin1.Value = true
+pl.BonniePurchased.Skin2.Value = true
+--chica
+pl.ChicaPurchased.Value = true
+pl.ChicaPurchased.Skin1.Value = true
+--golden fred
+pl.GFreddyPurchased.Value = true
+pl.GFreddyPurchased.Skin1.Value = true
+pl.FoxyPurchased.Skin2.Value = true
+end)
+tab:Slider("WalkSpeed", "Makes your character's WalkSpeed lower or higher, to your liking.", 0, 100,16,function(walk)
+game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = walk
+
+end)
+tab:Slider("Gravity", "Makes your character's Gravity higher or lower, to your liking.", 0, 100,16,function(t)
+print(t)
+game.Workspace.Gravity = t
+end)
+tab:Slider("JumpPower", "Makes your character's JumpPower higher or lower, to your liking.", 0, 100,16,function(jump)
+print(t)
+game.Players.LocalPlayer.Character.Humanoid.JumpPower = jump
+end)
+tab:Slider("Health", "Makes your character's Health higher or lower, to your liking.", 0, 100,16,function(Health)
+print(t)
+game:GetService("Players").LocalPlayer.Character.Humanoid.Health = Health
+end)
+
+end
 if game.PlaceId == 205224386 then
 
 local Flux = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/fluxlib.txt")()
