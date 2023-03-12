@@ -9,6 +9,23 @@
 ╚══════╝╚══════╝╚═╝░░╚═╝╚═╝░╚═════╝░╚═════╝░  ░╚═════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚══════╝╚═════╝░
 
 ]]
+if game.PlaceId == 5702593762 then
+
+local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/Vape.txt")()
+
+local win = lib:Window("Zerius Hub",Color3.fromRGB(44, 120, 224), Enum.KeyCode.RightControl)
+
+local tab = win:Tab("Main")
+
+tab:Button("Teleport to End", function()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(1019, 1006, 96)
+end)
+local ta1b = win:Tab("Visuals")
+
+ta1b:Colorpicker("Change UI Color",Color3.fromRGB(44, 120, 224), function(t)
+lib:ChangePresetColor(Color3.fromRGB(t.R * 255, t.G * 255, t.B * 255))
+end)
+end
 if game.PlaceId == 2092166489 then
   local lib = loadstring(game:HttpGet"https://raw.githubusercontent.com/dawid-scripts/UI-Libs/main/Vape.txt")()
 
